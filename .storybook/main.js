@@ -9,7 +9,7 @@ module.exports = {
     ]
   }),
   webpackFinal: (config) => {
-    config.resolve.modules.push(`${process.cwd()}/src`)
-    return config
+    config.resolve.modules.push(`${process.cwd()}/src`);
+    return config;
   }
-}
+};
