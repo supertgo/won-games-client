@@ -17,7 +17,10 @@ const wrapperModiffiers = {
       width: 5.8rem;
       height: 4.5rem;
       
-      svg {height: 4.5rem;}
+      svg {
+        height: 4.5rem;
+        pointer-events: none;
+      }
 
       .text {
         display: none;
