@@ -10,9 +10,16 @@ export type GameCardProps = {
   title: string;
   developer: string;
   price: string;
+  promotionalPrice?: string;
 };
 
-const GameCard = ({ img, title, developer, price }: GameCardProps) => (
+const GameCard = ({
+  img,
+  title,
+  developer,
+  price,
+  promotionalPrice
+}: GameCardProps) => (
   <S.Wrapper>
     <S.ImageBox>
       {/* eslint-disable-next-line @next/next/no-img-element*/}
@@ -27,7 +34,8 @@ const GameCard = ({ img, title, developer, price }: GameCardProps) => (
         <FavoriteBorder aria-label="Add to wishlist" />
       </S.FavButton>
       <S.BuyBox>
-        <S.Price>{price}</S.Price>
+        {!!promotionalPrice && <S.Price isPromotional>{price}</S.Price>}
+        <S.Price>{promotionalPrice || price}</S.Price>
         <Button icon={<AddShoppingCart />} size="small" />
       </S.BuyBox>
     </S.Content>
