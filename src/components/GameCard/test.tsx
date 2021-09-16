@@ -28,5 +28,7 @@ describe('<GameCard />', () => {
     );
 
     expect(screen.getByText(props.price)).toBeInTheDocument();
+
+    expect(screen.getByLabelText(/add to wishlist/i)).toBeInTheDocument();
   });
 });
