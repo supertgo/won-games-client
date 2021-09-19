@@ -43,4 +43,10 @@ describe('<BannerSlider />', () => {
       screen.getByRole('heading', { name: /Defy death 2/i, hidden: true })
     ).toBeInTheDocument();
   });
+
+  it('should render the docs', () => {
+    const { container } = renderWithTheme(<BannerSlider items={items} />);
+
+    expect(container.querySelector('.slick-dots')).toBeInTheDocument();
+  });
 });
