@@ -13,7 +13,7 @@ const Sections = styled.section`
       margin-bottom: ${theme.spacings.medium};
     }
 
-    {HighlightStyles.Wrapper} {
+    ${HighlightStyles.Wrapper} {
       ${media.lessThan('medium')`
         margin-right: calc(-${theme.grid.gutter} / 2);
         margin-left: calc(-${theme.grid.gutter} / 2);
@@ -25,6 +25,7 @@ const Sections = styled.section`
         margin-right: calc(-${theme.grid.gutter} / 2);
       `}
     }
+
     margin-bottom: calc(${theme.spacings.large} * 2);
   `}
 `;
@@ -44,6 +45,7 @@ export const SectionBanner = styled.section`
 export const SectionNews = styled(Sections)`
   ${({ theme }) => css`
     margin-bottom: calc(${theme.spacings.xxlarge} * 2);
+
     ${media.greaterThan('large')`
       margin-top: -13rem;
     `}
