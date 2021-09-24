@@ -113,4 +113,19 @@ describe('<TextField />', () => {
     userEvent.tab();
     expect(input).not.toHaveFocus();
   });
+
+  it('It should show error mensagem when error ocorrs', () => {
+    const { container } = renderWithTheme(
+      <TextField
+        label="label"
+        labelFor="label"
+        icon={<Email data-testid="icon" />}
+        error="Something went wrong"
+      />
+    );
+
+    expect(screen.getByText('Something went wrong')).toBeInTheDocument();
+
+    expect(container.firstChild).toMatchSnapshot();
+  });
 });
