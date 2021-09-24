@@ -1,5 +1,5 @@
 import Auth from 'templates/Auth';
 
 export default function signUp() {
-  return <Auth />;
+  return <Auth title="Sing Up">Children</Auth>;
 }
