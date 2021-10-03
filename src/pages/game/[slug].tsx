@@ -31,7 +31,7 @@ export async function getStaticProps() {
     CD PROJEKT®, Cyberpunk®, Cyberpunk 2077® are registered trademarks of CD PROJEKT S.A. © 2019
     CD PROJEKT S.A. All rights reserved. All other copyrights and trademarks are the property of their
     respective owners.
-  </p>`
+  </p>`;
 
   return {
     props: {
