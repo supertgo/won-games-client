@@ -52,10 +52,19 @@ const Home = ({
 
     <S.SectionUpcoming>
       <Showcase title="Upcoming" games={upcommingGames} color="white" />
-      <Showcase highlight={upcommingHighlight} games={upcommingMoreGames} color="white"/>
+      <Showcase
+        highlight={upcommingHighlight}
+        games={upcommingMoreGames}
+        color="white"
+      />
     </S.SectionUpcoming>
 
-    <Showcase title="Free games" highlight={freeHighlight} games={freeGames} color="white" />
+    <Showcase
+      title="Free games"
+      highlight={freeHighlight}
+      games={freeGames}
+      color="white"
+    />
   </Base>
 );
 
