@@ -47,14 +47,15 @@ const Home = ({
       title="Most Popular"
       highlight={mostPopularHighlight}
       games={mostPopularGames}
+      color="white"
     />
 
     <S.SectionUpcoming>
-      <Showcase title="Upcoming" games={upcommingGames} />
-      <Showcase highlight={upcommingHighlight} games={upcommingMoreGames} />
+      <Showcase title="Upcoming" games={upcommingGames} color="white" />
+      <Showcase highlight={upcommingHighlight} games={upcommingMoreGames} color="white"/>
     </S.SectionUpcoming>
 
-    <Showcase title="Free games" highlight={freeHighlight} games={freeGames} />
+    <Showcase title="Free games" highlight={freeHighlight} games={freeGames} color="white" />
   </Base>
 );
 
