@@ -1,12 +1,14 @@
+import 'match-media-mock';
 import { screen } from '@testing-library/react';
 import { renderWithTheme } from 'utils/tests/helpers';
+
+import Wishlist from '.';
 
 import gamesMock from 'components/GameCardSlider/mock';
 import highlightMock from 'components/Highlight/mock';
 
-import Wishlist from '.';
-
 const props = {
+  games: gamesMock,
   recommendedHighlight: highlightMock,
   recommendedGames: gamesMock
 };
@@ -25,6 +27,8 @@ describe('<Wishlist />', () => {
     expect(
       screen.getByRole('heading', { name: /wishlist/i })
     ).toBeInTheDocument();
+
+    expect(screen.getAllByText(/population zero/i)).toHaveLength(6);
     expect(screen.getByTestId('Mock Showcase')).toBeInTheDocument();
   });
 });
