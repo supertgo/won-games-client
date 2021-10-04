@@ -5,6 +5,7 @@ import Showcase from 'components/Showcase';
 import GameCard from 'components/GameCard';
 import { GameCardProps } from 'components/GameCard';
 import { HighlightProps } from 'components/Highlight';
+import { Grid } from 'components/Grid';
 
 //import * as S from './styles';
 
@@ -25,9 +26,11 @@ const Wishlist = ({
         Wishlist
       </Heading>
 
-      {games?.map((game, index) => (
-        <GameCard key={`wishlist-${index}`} {...game} />
-      ))}
+      <Grid>
+        {games?.map((game, index) => (
+          <GameCard key={`wishlist-${index}`} {...game} />
+        ))}
+      </Grid>
     </Container>
 
     <Showcase
