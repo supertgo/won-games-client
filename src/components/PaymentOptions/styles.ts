@@ -40,7 +40,6 @@ const Card = styled.label`
   ${({ theme }) => css`
     display: flex;
     height: 5rem;
-    max-width: 30rem;
     align-items: center;
     border-radius: 0.2rem;
     cursor: pointer;
