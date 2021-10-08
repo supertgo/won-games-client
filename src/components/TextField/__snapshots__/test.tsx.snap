@@ -110,6 +110,8 @@ exports[`<TextField /> It should show error mensagem when error ocorrs 1`] = `
     </div>
     <input
       class="c8"
+      id="label"
+      name="label"
       type="text"
       value=""
     />
