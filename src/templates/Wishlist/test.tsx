@@ -48,6 +48,6 @@ describe('<Wishlist />', () => {
     );
 
     expect(screen.queryByText(/population zero/i)).not.toBeInTheDocument();
-    expect(screen.getByTestId('Mock Empty')).toBeInTheDocument();
+    expect(screen.getAllByTestId('Mock Empty')).toHaveLength(2);
   });
 });
