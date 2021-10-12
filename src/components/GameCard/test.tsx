@@ -7,12 +7,18 @@ const props = {
   img: 'https://source.unsplash.com/user/willianjusten/300x140',
   title: 'Population Zero',
   developer: 'Rockstar Games',
-  price: 'R$ 235,00'
+  price: 'R$ 235,00',
+  slug: 'population-zero'
 };
 
 describe('<GameCard />', () => {
   it('should render correctly', () => {
-    renderWithTheme(<GameCard {...props} />);
+    const { container } = renderWithTheme(<GameCard {...props} />);
+
+    expect(screen.getByRole('link', { name: props.title })).toHaveAttribute(
+      'href',
+      `/game/${props.slug}`
+    );
 
     expect(
       screen.getByRole('heading', { name: props.title })
@@ -28,6 +34,8 @@ describe('<GameCard />', () => {
     );
 
     expect(screen.getByLabelText(/add to wishlist/i)).toBeInTheDocument();
+
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it('it should render price in label', () => {
