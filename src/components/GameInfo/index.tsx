@@ -1,12 +1,15 @@
 import Button from 'components/Button';
 import Heading from 'components/Heading';
+import Ribbon from 'components/Ribbon';
 
 import {
   ShoppingCart as ShoppingCartIcon,
   FavoriteBorder as FavoriteBorderIcon
 } from '@styled-icons/material-outlined';
+
+import formatPrice from 'utils/formatPrice';
+
 import * as S from './styles';
-import Ribbon from 'components/Ribbon';
 
 export type GameInfoProps = {
   title: string;
@@ -20,12 +23,7 @@ const GameInfo = ({ title, description, price }: GameInfoProps) => (
       {title}
     </Heading>
 
-    <Ribbon color="secondary">
-      {new Intl.NumberFormat('en', {
-        style: 'currency',
-        currency: 'USD'
-      }).format(price)}
-    </Ribbon>
+    <Ribbon color="secondary">{formatPrice(price)}</Ribbon>
 
     <S.Description>{description}</S.Description>
     <S.ButtonsWrapper>

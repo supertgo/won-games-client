@@ -9,8 +9,8 @@ export default {
     img: 'https://source.unsplash.com/user/willianjusten/300x140',
     title: 'Population Zero',
     developer: 'Rockstar Games',
-    price: 'R$ 235,00',
-    promotionalPrice: 'R$ 200,00'
+    price: 235.0,
+    promotionalPrice: 200.0
   },
   argTypes: {
     ribbon: {

@@ -7,7 +7,7 @@ const props = {
   img: 'https://source.unsplash.com/user/willianjusten/300x140',
   title: 'Population Zero',
   developer: 'Rockstar Games',
-  price: 'R$ 235,00',
+  price: 235,
   slug: 'population-zero'
 };
 
@@ -41,37 +41,37 @@ describe('<GameCard />', () => {
   it('it should render price in label', () => {
     renderWithTheme(<GameCard {...props} />);
 
-    expect(screen.getByText(props.price)).not.toHaveStyle({
+    expect(screen.getByText('$235.00')).not.toHaveStyle({
       textDecoration: 'line-through'
     });
-    expect(screen.getByText(props.price)).not.toHaveStyle({
+    expect(screen.getByText('$235.00')).not.toHaveStyle({
       color: '#8F8F8F'
     });
-    expect(screen.getByText(props.price)).toHaveStyle({
+    expect(screen.getByText('$235.00')).toHaveStyle({
       backgroundColor: '#3CD3C1'
     });
-    expect(screen.getByText(props.price)).toHaveStyle({
+    expect(screen.getByText('$235.00')).toHaveStyle({
       color: '#FAFAFA'
     });
   });
 
   it('it should render a line-through in price when promotional', () => {
-    renderWithTheme(<GameCard {...props} promotionalPrice="R$ 100,00" />);
+    renderWithTheme(<GameCard {...props} promotionalPrice={100} />);
 
-    expect(screen.getByText(props.price)).toHaveStyle({
+    expect(screen.getByText('$235.00')).toHaveStyle({
       textDecoration: 'line-through'
     });
-    expect(screen.getByText(props.price)).toHaveStyle({
+    expect(screen.getByText('$235.00')).toHaveStyle({
       color: '#8F8F8F'
     });
 
-    expect(screen.getByText('R$ 100,00')).toHaveStyle({
+    expect(screen.getByText('$100.00')).toHaveStyle({
       backgroundColor: '#3CD3C1'
     });
-    expect(screen.getByText('R$ 100,00')).not.toHaveStyle({
+    expect(screen.getByText('$100.00')).not.toHaveStyle({
       textDecoration: 'line-through'
     });
-    expect(screen.getByText('R$ 100,00')).toHaveStyle({
+    expect(screen.getByText('$100.00')).toHaveStyle({
       color: '#FAFAFA'
     });
   });
