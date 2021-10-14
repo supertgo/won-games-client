@@ -10,13 +10,16 @@ import Home from '.';
 
 const props = {
   banners: bannerMock,
-  newGames: [gamesMock[0]],
+  newGamesTitle: 'News',
+  newGames: gamesMock,
+  mostPopularGamesTitle: 'Most Popular',
   mostPopularHighlight: highlightMock,
-  mostPopularGames: [gamesMock[0]],
-  upcommingGames: [gamesMock[0]],
-  upcommingHighlight: highlightMock,
-  upcommingMoreGames: [gamesMock[0]],
-  freeGames: [gamesMock[0]],
+  mostPopularGames: gamesMock,
+  upcomingGamesTitle: 'Upcoming',
+  upcomingGames: gamesMock,
+  upcomingHighlight: highlightMock,
+  freeGamesTitle: 'Free Games',
+  freeGames: gamesMock,
   freeHighlight: highlightMock
 };
 
@@ -43,6 +46,6 @@ describe('<Home />', () => {
     renderWithTheme(<Home {...props} />);
 
     expect(screen.getByTestId('Mock BannerSlider')).toBeInTheDocument();
-    expect(screen.getAllByTestId('Mock Showcase')).toHaveLength(5);
+    expect(screen.getAllByTestId('Mock Showcase')).toHaveLength(4);
   });
 });
