@@ -1557,7 +1557,7 @@ enum ENUM_COMPONENTPAGEHIGHLIGHT_ALIGNMENT {
 
 type ComponentPageHighlight {
   id: ID!
-  title: String!
+  title: String
   subtitle: String!
   background: UploadFile
   floatImage: UploadFile
@@ -1567,7 +1567,7 @@ type ComponentPageHighlight {
 }
 
 input ComponentPageHighlightInput {
-  title: String!
+  title: String
   subtitle: String!
   background: ID
   floatImage: ID

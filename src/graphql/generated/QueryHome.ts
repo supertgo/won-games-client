@@ -105,7 +105,7 @@ export interface QueryHome_sections_newGames_highlight_floatImage {
 
 export interface QueryHome_sections_newGames_highlight {
   __typename: "ComponentPageHighlight";
-  title: string;
+  title: string | null;
   subtitle: string;
   background: QueryHome_sections_newGames_highlight_background | null;
   floatImage: QueryHome_sections_newGames_highlight_floatImage | null;
@@ -132,7 +132,7 @@ export interface QueryHome_sections_popularGames_highlight_floatImage {
 
 export interface QueryHome_sections_popularGames_highlight {
   __typename: "ComponentPageHighlight";
-  title: string;
+  title: string | null;
   subtitle: string;
   background: QueryHome_sections_popularGames_highlight_background | null;
   floatImage: QueryHome_sections_popularGames_highlight_floatImage | null;
@@ -179,7 +179,7 @@ export interface QueryHome_sections_upcomingGames_highlight_floatImage {
 
 export interface QueryHome_sections_upcomingGames_highlight {
   __typename: "ComponentPageHighlight";
-  title: string;
+  title: string | null;
   subtitle: string;
   background: QueryHome_sections_upcomingGames_highlight_background | null;
   floatImage: QueryHome_sections_upcomingGames_highlight_floatImage | null;
@@ -206,7 +206,7 @@ export interface QueryHome_sections_freeGames_highlight_floatImage {
 
 export interface QueryHome_sections_freeGames_highlight {
   __typename: "ComponentPageHighlight";
-  title: string;
+  title: string | null;
   subtitle: string;
   background: QueryHome_sections_freeGames_highlight_background | null;
   floatImage: QueryHome_sections_freeGames_highlight_floatImage | null;
