@@ -105,4 +105,12 @@ describe('<GameCard />', () => {
     expect(ribbon).toHaveStyle({ backgroundColor: '#3CD3C1' });
     expect(ribbon).toHaveStyle({ height: '2.6rem', fontSize: '1.2rem' });
   });
+
+  it('should render free when the games is free', () => {
+    renderWithTheme(<GameCard {...props} price={0} promotionalPrice={15} />);
+
+    expect(screen.getByText(/free/i)).toBeInTheDocument();
+    expect(screen.queryByText(/0/i)).not.toBeInTheDocument();
+    expect(screen.queryByText(/15/i)).not.toBeInTheDocument();
+  });
 });
