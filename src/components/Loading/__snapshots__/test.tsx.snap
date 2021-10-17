@@ -1,0 +1,62 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Loading /> should render the loading component 1`] = `
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
+.c1 {
+  font-size: 2.0rem;
+  color: #FAFAFA;
+  margin: 0.8rem;
+  -webkit-animation: fade 1s linear 0s infinite;
+  animation: fade 1s linear 0s infinite;
+}
+
+.c2 {
+  width: 3.2rem;
+  height: 3.2rem;
+  border: 3px solid #F231A5;
+  border-top: 3px solid transparent;
+  border-radius: 50%;
+  -webkit-animation: spin 1s linear 0s infinite;
+  animation: spin 1s linear 0s infinite;
+}
+
+@media (min-width:768px) {
+  .c1 {
+    font-size: 2.8rem;
+  }
+}
+
+@media (min-width:768px) {
+  .c2 {
+    width: 4.8rem;
+    height: 4.8rem;
+  }
+}
+
+<main
+  class="c0"
+>
+  <span
+    class="c1"
+  >
+    Loading...
+  </span>
+  <div
+    class="c2"
+  />
+</main>
+`;
