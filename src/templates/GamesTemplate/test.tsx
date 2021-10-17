@@ -1,9 +1,13 @@
 import { screen } from '@testing-library/react';
+import { MockedProvider } from '@apollo/client/testing';
 import { renderWithTheme } from 'utils/tests/helpers';
-import gamesMock from 'components/GameCardSlider/mock';
+
+import { fetchMoreMock, gamesMock } from './mocks';
 import filterItemsMock from 'components/ExploreSidebar/mock';
 
 import Games from '.';
+import userEvent from '@testing-library/user-event';
+import apolloCache from 'utils/apolloCache';
 
 jest.mock('templates/Base', () => ({
   __esModule: true,
@@ -19,24 +23,49 @@ jest.mock('components/ExploreSidebar', () => ({
   }
 }));
 
-jest.mock('components/GameCard', () => ({
-  __esModule: true,
-  default: function Mock() {
-    return <div data-testid="Mock GameCard" />;
-  }
-}));
-
 describe('<Games />', () => {
-  it('should render sections', () => {
+  it('should render loading when starting template', () => {
     renderWithTheme(
-      <Games filterItems={filterItemsMock} games={[gamesMock[0]]} />
+      <MockedProvider mocks={[]} addTypename={false}>
+        <Games filterItems={filterItemsMock} />
+      </MockedProvider>
     );
 
-    expect(screen.getByTestId('Mock ExploreSidebar')).toBeInTheDocument();
-    expect(screen.getByTestId('Mock GameCard')).toBeInTheDocument();
+    expect(screen.getByText(/loading.../i)).toBeInTheDocument();
+  });
+  it('should render sections', async () => {
+    renderWithTheme(
+      <MockedProvider mocks={[gamesMock]} addTypename={false}>
+        <Games filterItems={filterItemsMock} />
+      </MockedProvider>
+    );
+    //starts without data
+    expect(screen.getByText(/loading.../i)).toBeInTheDocument();
+
+    //waiting to data
 
     expect(
-      screen.getByRole('button', { name: /show more/i })
+      await screen.findByTestId('Mock ExploreSidebar')
     ).toBeInTheDocument();
+
+    expect(await screen.findByText(/Stardew Valley/i)).toBeInTheDocument();
+
+    expect(
+      await screen.getByRole('button', { name: /show more/i })
+    ).toBeInTheDocument();
+  });
+
+  it('should render more games when button show more is clicked', async () => {
+    renderWithTheme(
+      <MockedProvider mocks={[gamesMock, fetchMoreMock]} cache={apolloCache}>
+        <Games filterItems={filterItemsMock} />
+      </MockedProvider>
+    );
+
+    expect(await screen.findByText(/Stardew Valley/i)).toBeInTheDocument();
+
+    userEvent.click(await screen.getByRole('button', { name: /show more/i }));
+
+    expect(await screen.findByText(/fetch more game/i)).toBeInTheDocument();
   });
 });
