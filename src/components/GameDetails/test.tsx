@@ -5,7 +5,7 @@ import GameDetails, { GameDetailsProps } from '.';
 
 const props: GameDetailsProps = {
   developer: 'Different Tales',
-  plataforms: ['windows', 'linux', 'mac'],
+  platforms: ['windows', 'linux', 'mac'],
   releaseDate: '2020-11-21T23:00:00',
   rating: 'BR0',
   genres: ['Role-playing', 'Narrative']
@@ -24,7 +24,7 @@ describe('<GameDetails />', () => {
     ).toBeInTheDocument();
 
     expect(
-      screen.getByRole('heading', { name: /plataforms/i })
+      screen.getByRole('heading', { name: /platforms/i })
     ).toBeInTheDocument();
 
     expect(
@@ -40,7 +40,7 @@ describe('<GameDetails />', () => {
     ).toBeInTheDocument();
   });
 
-  it('should render plataform icons', () => {
+  it('should render platform icons', () => {
     renderWithTheme(<GameDetails {...props} />);
 
     expect(screen.getByRole('img', { name: /mac/i })).toBeInTheDocument();

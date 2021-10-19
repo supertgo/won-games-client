@@ -13,7 +13,7 @@ export default {
   },
   args: mockGame,
   argTypes: {
-    plataforms: {
+    platforms: {
       control: {
         type: 'inline-check',
         options: ['windows', 'linux', 'mac']
