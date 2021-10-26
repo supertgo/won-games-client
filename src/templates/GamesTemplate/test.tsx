@@ -5,16 +5,19 @@ import { renderWithTheme } from 'utils/tests/helpers';
 import filterItemsMock from 'components/ExploreSidebar/mock';
 import { fetchMoreMock, gamesMock } from './mocks';
 
-import GamesTemplate from '.';
+import Games from '.';
 import userEvent from '@testing-library/user-event';
 import apolloCache from 'utils/apolloCache';
 
 // eslint-disable-next-line @typescript-eslint/no-var-requires
+
+const push = jest.fn();
+
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const useRouter = jest.spyOn(require('next/router'), 'useRouter');
 
 useRouter.mockImplementation(() => ({
-  push: jest.fn(() => Promise.resolve(true)),
+  push,
   prefetch: jest.fn(() => Promise.resolve(true)),
   replace: jest.fn(() => Promise.resolve(true)),
   query: {},
@@ -34,11 +37,11 @@ jest.mock('templates/Base', () => ({
   }
 }));
 
-describe('<GamesTemplate />', () => {
+describe('<Games />', () => {
   it('should render loading when starting the template', () => {
     renderWithTheme(
       <MockedProvider mocks={[]} addTypename={false}>
-        <GamesTemplate filterItems={filterItemsMock} />
+        <Games filterItems={filterItemsMock} />
       </MockedProvider>
     );
 
@@ -48,7 +51,7 @@ describe('<GamesTemplate />', () => {
   it('should render sections', async () => {
     renderWithTheme(
       <MockedProvider mocks={[gamesMock]} addTypename={false}>
-        <GamesTemplate filterItems={filterItemsMock} />
+        <Games filterItems={filterItemsMock} />
       </MockedProvider>
     );
 
@@ -68,10 +71,22 @@ describe('<GamesTemplate />', () => {
     ).toBeInTheDocument();
   });
 
+  it('should render empty when there are no games with the query', async () => {
+    renderWithTheme(
+      <MockedProvider mocks={[]} addTypename={false}>
+        <Games filterItems={filterItemsMock} />
+      </MockedProvider>
+    );
+
+    expect(
+      await screen.findByText(/We didn´t find any games with these filters/i)
+    ).toBeInTheDocument();
+  });
+
   it('should render more games when show more is clicked', async () => {
     renderWithTheme(
       <MockedProvider mocks={[gamesMock, fetchMoreMock]} cache={apolloCache}>
-        <GamesTemplate filterItems={filterItemsMock} />
+        <Games filterItems={filterItemsMock} />
       </MockedProvider>
     );
 
@@ -80,5 +95,22 @@ describe('<GamesTemplate />', () => {
     userEvent.click(await screen.findByRole('button', { name: /show more/i }));
 
     expect(await screen.findByText(/Fetch More Game/i)).toBeInTheDocument();
+  });
+
+  it('should change push router when selecting a filter', async () => {
+    renderWithTheme(
+      <MockedProvider mocks={[gamesMock, fetchMoreMock]} cache={apolloCache}>
+        <Games filterItems={filterItemsMock} />
+      </MockedProvider>
+    );
+
+    userEvent.click(await screen.findByRole('checkbox', { name: /windows/i }));
+    userEvent.click(await screen.findByRole('checkbox', { name: /linux/i }));
+    userEvent.click(await screen.findByLabelText(/low to high/i));
+
+    expect(push).toHaveBeenCalledWith({
+      pathname: '/games',
+      query: { platforms: ['windows', 'linux'], sort_by: 'low-to-high' }
+    });
   });
 });
