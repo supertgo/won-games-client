@@ -1,12 +1,12 @@
 import { screen } from '@testing-library/react';
-import { renderWithTheme } from 'utils/tests/helpers';
 import userEvent from '@testing-library/user-event';
+import { renderWithTheme } from 'utils/tests/helpers';
 import { css } from 'styled-components';
-import { Overlay } from './styles';
-
-import items from 'components/ExploreSidebar/mock';
 
 import ExploreSidebar from '.';
+import { Overlay } from './styles';
+
+import items from './mock';
 
 describe('<ExploreSidebar />', () => {
   it('should render headings', () => {
@@ -34,7 +34,7 @@ describe('<ExploreSidebar />', () => {
     ).toBeInTheDocument();
   });
 
-  it('should render filter button', () => {
+  it('should render the filter button', () => {
     renderWithTheme(<ExploreSidebar items={items} onFilter={jest.fn} />);
 
     expect(screen.getByRole('button', { name: /filter/i })).toBeInTheDocument();
@@ -44,15 +44,13 @@ describe('<ExploreSidebar />', () => {
     renderWithTheme(
       <ExploreSidebar
         items={items}
-        initialValues={{
-          platforms: ['windows'],
-          sort_by: 'low-to-high'
-        }}
         onFilter={jest.fn}
+        initialValues={{ platforms: ['windows'], sort_by: 'low-to-high' }}
       />
     );
 
     expect(screen.getByRole('checkbox', { name: /windows/i })).toBeChecked();
+
     expect(screen.getByRole('radio', { name: /low to high/i })).toBeChecked();
   });
 
@@ -66,8 +64,6 @@ describe('<ExploreSidebar />', () => {
         onFilter={onFilter}
       />
     );
-
-    userEvent.click(screen.getByRole('button', { name: /filter/i }));
 
     expect(onFilter).toBeCalledWith({
       platforms: ['windows'],
@@ -83,7 +79,9 @@ describe('<ExploreSidebar />', () => {
     userEvent.click(screen.getByLabelText(/windows/i));
     userEvent.click(screen.getByLabelText(/linux/i));
     userEvent.click(screen.getByLabelText(/low to high/i));
-    userEvent.click(screen.getByRole('button', { name: /filter/i }));
+
+    // 1st render (initialValues) + 3 clicks
+    expect(onFilter).toHaveBeenCalledTimes(4);
 
     expect(onFilter).toBeCalledWith({
       platforms: ['windows', 'linux'],
@@ -99,20 +97,16 @@ describe('<ExploreSidebar />', () => {
     userEvent.click(screen.getByLabelText(/low to high/i));
     userEvent.click(screen.getByLabelText(/high to low/i));
 
-    userEvent.click(screen.getByRole('button', { name: /filter/i }));
-
     expect(onFilter).toBeCalledWith({ sort_by: 'high-to-low' });
   });
 
-  it('should open/close sidebar when filtering on mobile', () => {
-    const onFilter = jest.fn();
-
+  it('should open/close sidebar when filtering on mobile ', () => {
     const { container } = renderWithTheme(
-      <ExploreSidebar items={items} onFilter={onFilter} />
+      <ExploreSidebar items={items} onFilter={jest.fn} />
     );
 
     const variant = {
-      media: '(max-width: 768px)',
+      media: '(max-width:768px)',
       modifier: String(css`
         ${Overlay}
       `)
@@ -127,6 +121,12 @@ describe('<ExploreSidebar />', () => {
     expect(Element).toHaveStyleRule('opacity', '1', variant);
 
     userEvent.click(screen.getByLabelText(/close filters/));
+
+    expect(Element).not.toHaveStyleRule('opacity', '1', variant);
+
+    userEvent.click(screen.getByLabelText(/open filters/));
+
+    userEvent.click(screen.getByRole('button', { name: /filter/i }));
 
     expect(Element).not.toHaveStyleRule('opacity', '1', variant);
   });

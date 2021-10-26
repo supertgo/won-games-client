@@ -1,40 +1,62 @@
+import { ParsedUrlQueryInput } from 'querystring';
+import { useRouter } from 'next/router';
+
 import { useQueryGames } from 'graphql/queries/games';
-import { KeyboardArrowDown as ArrowDown } from '@styled-icons/material-outlined/KeyboardArrowDown';
+import {
+  parseQueryStringToFilter,
+  parseQueryStringToWhere
+} from 'utils/filter';
 
 import Base from 'templates/Base';
+import { KeyboardArrowDown as ArrowDown } from '@styled-icons/material-outlined/KeyboardArrowDown';
+
 import ExploreSidebar, { ItemProps } from 'components/ExploreSidebar';
-import GameCard, { GameCardProps } from 'components/GameCard';
+import GameCard from 'components/GameCard';
 import { Grid } from 'components/Grid';
-import Loading from 'components/Loading';
 
 import * as S from './styles';
 
 export type GamesTemplateProps = {
-  games?: GameCardProps[];
   filterItems: ItemProps[];
 };
 
 const GamesTemplate = ({ filterItems }: GamesTemplateProps) => {
+  const { push, query } = useRouter();
+
   const { data, loading, fetchMore } = useQueryGames({
-    variables: { limit: 15 }
+    variables: {
+      limit: 15,
+      where: parseQueryStringToWhere({ queryString: query, filterItems }),
+      sort: query.sort as string | null
+    }
   });
-  const handleFilter = () => {
+
+  const handleFilter = (items: ParsedUrlQueryInput) => {
+    push({
+      pathname: '/games',
+      query: items
+    });
     return;
   };
 
   const handleShowMore = () => {
-    fetchMore({
-      variables: { limit: 15, start: data?.games.length }
-    });
+    fetchMore({ variables: { limit: 15, start: data?.games.length } });
   };
 
   return (
     <Base>
       <S.Main>
-        <ExploreSidebar items={filterItems} onFilter={handleFilter} />
+        <ExploreSidebar
+          initialValues={parseQueryStringToFilter({
+            queryString: query,
+            filterItems
+          })}
+          items={filterItems}
+          onFilter={handleFilter}
+        />
 
         {loading ? (
-          <Loading />
+          <p>Loading...</p>
         ) : (
           <section>
             <Grid>

@@ -6,7 +6,7 @@ import * as CheckboxStyles from 'components/Checkbox/styles';
 import * as RadioStyles from 'components/Radio/styles';
 import * as HeadingStyles from 'components/Heading/styles';
 
-export const IconsWrapper = styled.div`
+export const IconWrapper = styled.div`
   cursor: pointer;
   width: 2.4rem;
   height: 2.4rem;
@@ -57,6 +57,9 @@ export const Footer = styled.div`
   ${({ theme }) => css`
     box-shadow: 0 -0.2rem 0.4rem ${rgba(theme.colors.black, 0.2)};
     padding: ${theme.spacings.small};
+    ${media.greaterThan('medium')`
+      display: none;
+    `}
   `}
 `;
 
@@ -85,7 +88,7 @@ const wrapperModifiers = {
       transform: translateY(0);
       overflow-y: scroll;
     }
-    ${Content}, ${Footer}, ${IconsWrapper} {
+    ${Content}, ${Footer}, ${IconWrapper} {
       z-index: ${theme.layers.modal};
     }
     ${HeadingStyles.Wrapper} {
@@ -97,7 +100,7 @@ const wrapperModifiers = {
     ${CheckboxStyles.Label} {
       color: ${theme.colors.black};
     }
-    ${IconsWrapper} {
+    ${IconWrapper} {
       color: ${theme.colors.black};
       > svg {
         position: absolute;
@@ -112,7 +115,7 @@ const wrapperModifiers = {
   `,
 
   close: (theme: DefaultTheme) => css`
-    ${IconsWrapper} {
+    ${IconWrapper} {
       color: ${theme.colors.white};
       > svg:last-child {
         display: none;

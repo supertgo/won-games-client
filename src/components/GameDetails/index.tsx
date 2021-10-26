@@ -4,12 +4,12 @@ import { Apple, Windows, Linux } from '@styled-icons/fa-brands';
 
 import * as S from './styles';
 
-type Plataform = 'windows' | 'linux' | 'mac';
+type Platform = 'windows' | 'linux' | 'mac';
 type Rating = 'BR0' | 'BR10' | 'BR12' | 'BR14' | 'BR16' | 'BR18';
 
 export type GameDetailsProps = {
   developer: string;
-  platforms: Plataform[];
+  platforms: Platform[];
   releaseDate: string;
   rating: Rating;
   genres: string[];
@@ -56,7 +56,7 @@ const GameDetails = ({
         <S.Block>
           <S.Title>Platforms</S.Title>
           <S.IconsWrapper>
-            {platforms.map((icon: Plataform) => (
+            {platforms.map((icon: Platform) => (
               <S.Icon key={icon}>{PlataformsIcons[icon]}</S.Icon>
             ))}
           </S.IconsWrapper>
