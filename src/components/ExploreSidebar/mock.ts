@@ -78,6 +78,10 @@ export default [
         name: 'adventure'
       },
       {
+        label: 'Sports',
+        name: 'sports'
+      },
+      {
         label: 'FPS',
         name: 'fps'
       },

@@ -15,8 +15,8 @@ import GameCard from 'components/GameCard';
 import { Grid } from 'components/Grid';
 
 import * as S from './styles';
-import Loading from 'components/Loading';
 import Empty from 'components/Empty';
+import Loading from 'components/Loading';
 
 export type GamesTemplateProps = {
   filterItems: ItemProps[];
@@ -26,6 +26,7 @@ const GamesTemplate = ({ filterItems }: GamesTemplateProps) => {
   const { push, query } = useRouter();
 
   const { data, loading, fetchMore } = useQueryGames({
+    notifyOnNetworkStatusChange: true,
     variables: {
       limit: 15,
       where: parseQueryStringToWhere({ queryString: query, filterItems }),
@@ -56,8 +57,7 @@ const GamesTemplate = ({ filterItems }: GamesTemplateProps) => {
           items={filterItems}
           onFilter={handleFilter}
         />
-
-        {loading ? (
+        {!data ? (
           <Loading />
         ) : (
           <section>
@@ -75,10 +75,18 @@ const GamesTemplate = ({ filterItems }: GamesTemplateProps) => {
                     />
                   ))}
                 </Grid>
-
-                <S.ShowMore role="button" onClick={handleShowMore}>
-                  <p>Show More</p>
-                  <ArrowDown size={35} />
+                <S.ShowMore>
+                  {loading ? (
+                    <S.ShowMoreLoading
+                      src="/img/dots.svg"
+                      alt="Loading more games..."
+                    />
+                  ) : (
+                    <S.ShowMoreButton role="button" onClick={handleShowMore}>
+                      <p>Show More</p>
+                      <ArrowDown size={35} />
+                    </S.ShowMoreButton>
+                  )}
                 </S.ShowMore>
               </>
             ) : (
