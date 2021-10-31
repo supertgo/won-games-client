@@ -80,8 +80,8 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   });
 
   return {
-    revalidate: 60,
     props: {
+      revalidade: 60,
       cover: `http://localhost:1337${game.cover?.src}`,
       gameInfo: {
         title: game.name,
