@@ -1,7 +1,7 @@
 import { useQueryGames } from 'graphql/queries/games';
 import { useContext, createContext, useState, useEffect } from 'react';
 import FormatPrice from 'utils/formatPrice';
-import { getStorageItem } from 'utils/localStorage';
+import { getStorageItem, setStorageItem } from 'utils/localStorage';
 import { cartMapper } from 'utils/mappers';
 
 const CART_KEY = 'cartItems';
@@ -17,12 +17,22 @@ export type CartContextData = {
   items: CartItem[];
   quantity: number;
   total: string;
+  loading: boolean;
+  isInCart: (id: string) => boolean;
+  addToCart: (id: string) => void;
+  removeFromCart: (id: string) => void;
+  clearCart: () => void;
 };
 
 export const CartContextDefaultValue = {
   items: [],
   quantity: 0,
-  total: '$0.00'
+  total: '$0.00',
+  loading: false,
+  isInCart: () => false,
+  addToCart: () => null,
+  removeFromCart: () => null,
+  clearCart: () => null
 };
 
 export const CartContext = createContext<CartContextData>(
@@ -42,7 +52,7 @@ const CartProvider = ({ children }: CartProviderProps) => {
     if (data) setCartItems(data);
   }, []);
 
-  const { data } = useQueryGames({
+  const { data, loading } = useQueryGames({
     skip: !cartItems?.length,
     variables: {
       where: {
@@ -55,12 +65,36 @@ const CartProvider = ({ children }: CartProviderProps) => {
     return acc + game.price;
   }, 0);
 
+  const isInCart = (id: string) => (id ? cartItems.includes(id) : false);
+
+  const saveCart = (CartItems: string[]) => {
+    setCartItems(CartItems);
+    setStorageItem(CART_KEY, CartItems);
+  };
+
+  const addToCart = (id: string) => {
+    saveCart([...cartItems, id]);
+  };
+
+  const removeFromCart = (id: string) => {
+    saveCart(cartItems.filter((value) => value !== id));
+  };
+
+  const clearCart = () => {
+    saveCart([]);
+  };
+
   return (
     <CartContext.Provider
       value={{
         items: cartMapper(data?.games),
         quantity: cartItems.length,
-        total: FormatPrice(total || 0)
+        total: FormatPrice(total || 0),
+        isInCart,
+        addToCart,
+        removeFromCart,
+        clearCart,
+        loading
       }}
     >
       {children}
