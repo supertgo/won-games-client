@@ -1,18 +1,18 @@
 import { screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { renderWithTheme } from 'utils/tests/helpers';
+import { render } from 'utils/test-utils';
 
 import UserDropdown from '.';
 
 describe('<UserDropdown />', () => {
   it('should render the username', () => {
-    renderWithTheme(<UserDropdown username="supertgo" />);
+    render(<UserDropdown username="supertgo" />);
 
     expect(screen.getByText(/supertgo/i)).toBeInTheDocument();
   });
 
   it('should render the username', () => {
-    renderWithTheme(<UserDropdown username="supertgo" />);
+    render(<UserDropdown username="supertgo" />);
 
     userEvent.click(screen.getByText('supertgo'));
 

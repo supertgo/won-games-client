@@ -1,11 +1,10 @@
-import { screen } from '@testing-library/react';
-import { renderWithTheme } from 'utils/tests/helpers';
+import { render, screen } from 'utils/test-utils';
 
 import Loading from '.';
 
 describe('<Loading />', () => {
   it('should render the loading component', () => {
-    const { container } = renderWithTheme(<Loading />);
+    const { container } = render(<Loading />);
 
     expect(screen.getByText(/loading/i)).toBeInTheDocument();
 

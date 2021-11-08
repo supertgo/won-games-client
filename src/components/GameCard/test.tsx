@@ -1,5 +1,5 @@
 import { fireEvent, screen } from '@testing-library/react';
-import { renderWithTheme } from 'utils/tests/helpers';
+import { render } from 'utils/test-utils';
 
 import GameCard from '.';
 
@@ -13,7 +13,7 @@ const props = {
 
 describe('<GameCard />', () => {
   it('should render correctly', () => {
-    const { container } = renderWithTheme(<GameCard {...props} />);
+    const { container } = render(<GameCard {...props} />);
 
     expect(screen.getByRole('link', { name: props.title })).toHaveAttribute(
       'href',
@@ -39,7 +39,7 @@ describe('<GameCard />', () => {
   });
 
   it('it should render price in label', () => {
-    renderWithTheme(<GameCard {...props} />);
+    render(<GameCard {...props} />);
 
     expect(screen.getByText('$235.00')).not.toHaveStyle({
       textDecoration: 'line-through'
@@ -56,7 +56,7 @@ describe('<GameCard />', () => {
   });
 
   it('it should render a line-through in price when promotional', () => {
-    renderWithTheme(<GameCard {...props} promotionalPrice={100} />);
+    render(<GameCard {...props} promotionalPrice={100} />);
 
     expect(screen.getByText('$235.00')).toHaveStyle({
       textDecoration: 'line-through'
@@ -77,21 +77,21 @@ describe('<GameCard />', () => {
   });
 
   it('it should render a field favorite icon when favorite is true', () => {
-    renderWithTheme(<GameCard {...props} favorite />);
+    render(<GameCard {...props} favorite />);
 
     expect(screen.getByLabelText(/remove from wishlist/i)).toBeInTheDocument();
   });
 
   it('it should call on fav method when favorite is clicked', () => {
     const onFav = jest.fn();
-    renderWithTheme(<GameCard {...props} favorite onFav={onFav} />);
+    render(<GameCard {...props} favorite onFav={onFav} />);
 
     fireEvent.click(screen.getAllByRole('button')[0]);
     expect(onFav).toBeCalled();
   });
 
   it('it should render a ribbon', () => {
-    renderWithTheme(
+    render(
       <GameCard
         {...props}
         ribbon="My Ribbon"
@@ -107,7 +107,7 @@ describe('<GameCard />', () => {
   });
 
   it('should render free when the games is free', () => {
-    renderWithTheme(<GameCard {...props} price={0} promotionalPrice={15} />);
+    render(<GameCard {...props} price={0} promotionalPrice={15} />);
 
     expect(screen.getByText(/free/i)).toBeInTheDocument();
     expect(screen.queryByText(/0/i)).not.toBeInTheDocument();
