@@ -1,43 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<GameCard /> should render correctly 1`] = `
-.c10 {
-  background: linear-gradient(180deg,#ff5f5f 0%,#f062c0 50%);
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  color: #FAFAFA;
-  border: none;
-  cursor: pointer;
-  border-radius: 0.4rem;
-  padding: 0.8rem;
-  -webkit-text-decoration: none;
-  text-decoration: none;
-  height: 3rem;
-  font-size: 1.2rem;
-}
-
-.c10:hover {
-  background: linear-gradient(180deg,#e35565 0%,#d958a6 50%);
-}
-
-.c10 svg {
-  width: 1.5rem;
-}
-
-.c10 svg + span {
-  margin-left: 0.8rem;
-}
-
 .c7 {
   display: inline-block;
   vertical-align: middle;
@@ -156,6 +119,43 @@ exports[`<GameCard /> should render correctly 1`] = `
   margin-right: calc(0.8rem / 2);
 }
 
+.c10 {
+  background: linear-gradient(180deg,#ff5f5f 0%,#f062c0 50%);
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  color: #FAFAFA;
+  border: none;
+  cursor: pointer;
+  border-radius: 0.4rem;
+  padding: 0.8rem;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  height: 3rem;
+  font-size: 1.2rem;
+}
+
+.c10:hover {
+  background: linear-gradient(180deg,#e35565 0%,#d958a6 50%);
+}
+
+.c10 svg {
+  width: 1.5rem;
+}
+
+.c10 svg + span {
+  margin-left: 0.8rem;
+}
+
 <article
   class="c0"
 >
@@ -221,6 +221,7 @@ exports[`<GameCard /> should render correctly 1`] = `
       >
         <svg
           aria-hidden="true"
+          aria-label="add to cart"
           class="c7"
           fill="currentColor"
           focusable="false"

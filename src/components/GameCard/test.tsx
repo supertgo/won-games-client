@@ -4,6 +4,7 @@ import { render } from 'utils/test-utils';
 import GameCard from '.';
 
 const props = {
+  id: '1',
   img: 'https://source.unsplash.com/user/willianjusten/300x140',
   title: 'Population Zero',
   developer: 'Rockstar Games',
