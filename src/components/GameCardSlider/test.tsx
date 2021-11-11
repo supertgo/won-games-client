@@ -2,49 +2,7 @@ import { render, screen } from 'utils/test-utils';
 import 'match-media-mock';
 
 import GameCardSlider from '.';
-
-const items = [
-  {
-    slug: 'population-zero',
-    title: 'Population Zero',
-    developer: 'Rockstar Games',
-    img: 'https://source.unsplash.com/user/willianjusten/300x140',
-    price: 235.0,
-    promotionalPrice: 215.0
-  },
-  {
-    slug: 'population-zero',
-    title: 'Population Zero',
-    developer: 'Rockstar Games',
-    img: 'https://source.unsplash.com/user/willianjusten/300x141',
-    price: 235.0,
-    promotionalPrice: 215.0
-  },
-  {
-    slug: 'population-zero',
-    title: 'Population Zero',
-    developer: 'Rockstar Games',
-    img: 'https://source.unsplash.com/user/willianjusten/300x142',
-    price: 235.0,
-    promotionalPrice: 215.0
-  },
-  {
-    slug: 'population-zero',
-    title: 'Population Zero',
-    developer: 'Rockstar Games',
-    img: 'https://source.unsplash.com/user/willianjusten/300x143',
-    price: 235.0,
-    promotionalPrice: 215.0
-  },
-  {
-    slug: 'population-zero',
-    title: 'Population Zero',
-    developer: 'Rockstar Games',
-    img: 'https://source.unsplash.com/user/willianjusten/300x144',
-    price: 235.0,
-    promotionalPrice: 215.0
-  }
-];
+import items from './mock';
 
 describe('<GameCardSlider />', () => {
   it('should render with one active item', () => {
