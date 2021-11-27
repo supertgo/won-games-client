@@ -1,17 +1,26 @@
-import Link from 'next/link'
-import Button from 'components/Button'
-import GameItem from 'components/GameItem'
+import Link from 'next/link';
+import Button from 'components/Button';
+import Loader from 'components/Loader';
+import GameItem from 'components/GameItem';
 
-import * as S from './styles'
-import Empty from 'components/Empty'
-import { useCart } from 'hooks/use-cart'
+import * as S from './styles';
+import Empty from 'components/Empty';
+import { useCart } from 'hooks/use-cart';
 
 export type CartListProps = {
-  hasButton?: boolean
-}
+  hasButton?: boolean;
+};
 
 const CartList = ({ hasButton = false }: CartListProps) => {
-  const { items, total } = useCart()
+  const { items, total, loading } = useCart();
+
+  if (loading) {
+    return (
+      <S.Loading>
+        <Loader />
+      </S.Loading>
+    );
+  }
 
   return (
     <S.Wrapper isEmpty={!items.length}>
@@ -40,7 +49,7 @@ const CartList = ({ hasButton = false }: CartListProps) => {
         />
       )}
     </S.Wrapper>
-  )
-}
+  );
+};
 
-export default CartList
+export default CartList;
