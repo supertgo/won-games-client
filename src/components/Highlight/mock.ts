@@ -4,4 +4,4 @@ export default {
   backgroundImage: '/img/red-dead-img.jpg',
   buttonLabel: 'Buy now',
   buttonLink: '/games/rdr2'
-}
+};

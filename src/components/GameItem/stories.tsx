@@ -1,5 +1,5 @@
-import { Story, Meta } from '@storybook/react/types-6-0'
-import GameItem, { GameItemProps } from '.'
+import { Story, Meta } from '@storybook/react/types-6-0';
+import GameItem, { GameItemProps } from '.';
 
 export default {
   title: 'GameItem',
@@ -9,13 +9,13 @@ export default {
     title: 'Red Dead Redemption 2',
     price: 'R$ 215,00'
   }
-} as Meta
+} as Meta;
 
-export const Default: Story<GameItemProps> = (args) => <GameItem {...args} />
+export const Default: Story<GameItemProps> = (args) => <GameItem {...args} />;
 
 export const WithPayment: Story<GameItemProps> = (args) => (
   <GameItem {...args} />
-)
+);
 
 WithPayment.args = {
   downloadLink: 'https://wongames.com/game/download/21312ndasd',
@@ -25,4 +25,4 @@ WithPayment.args = {
     number: '**** **** **** 4326',
     purchaseDate: 'Purchase made on 07/20/2020 at 20:32'
   }
-}
+};

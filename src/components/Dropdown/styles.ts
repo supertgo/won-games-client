@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components'
+import styled, { css } from 'styled-components';
 
 export const Title = styled.div`
   ${({ theme }) => css`
@@ -10,7 +10,7 @@ export const Title = styled.div`
     padding-right: 2.4rem;
     z-index: ${theme.layers.alwaysOnTop};
   `}
-`
+`;
 
 export const Content = styled.div`
   ${({ theme }) => css`
@@ -33,7 +33,7 @@ export const Content = styled.div`
       right: 2.4rem;
     }
   `}
-`
+`;
 
 export const Overlay = styled.div`
   ${({ theme }) => css`
@@ -45,11 +45,11 @@ export const Overlay = styled.div`
     right: 0;
     z-index: ${theme.layers.overlay};
   `}
-`
+`;
 
 type WrapperProps = {
-  isOpen?: boolean
-}
+  isOpen?: boolean;
+};
 
 const wrapperModifiers = {
   open: () => css`
@@ -62,7 +62,7 @@ const wrapperModifiers = {
     pointer-events: none;
     transform: translateY(-2rem);
   `
-}
+};
 
 export const Wrapper = styled.div<WrapperProps>`
   ${({ theme, isOpen }) => css`
@@ -77,4 +77,4 @@ export const Wrapper = styled.div<WrapperProps>`
       ${!isOpen && wrapperModifiers.close()}
     }
   `}
-`
+`;

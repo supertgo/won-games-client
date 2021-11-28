@@ -1,4 +1,4 @@
-import { gql } from '@apollo/client'
+import { gql } from '@apollo/client';
 
 export const GameFragment = gql`
   fragment GameFragment on Game {
@@ -13,4 +13,4 @@ export const GameFragment = gql`
     }
     price
   }
-`
+`;

@@ -1,10 +1,10 @@
-import Heading from 'components/Heading'
-import { PaymentCard } from 'components/PaymentOptions'
-import * as S from './styles'
+import Heading from 'components/Heading';
+import { PaymentCard } from 'components/PaymentOptions';
+import * as S from './styles';
 
 export type CardsListProps = {
-  cards?: PaymentCard[]
-}
+  cards?: PaymentCard[];
+};
 
 const CardsList = ({ cards }: CardsListProps) => (
   <>
@@ -19,6 +19,6 @@ const CardsList = ({ cards }: CardsListProps) => (
       </S.Card>
     ))}
   </>
-)
+);
 
-export default CardsList
+export default CardsList;

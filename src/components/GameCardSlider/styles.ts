@@ -1,9 +1,9 @@
-import styled, { css } from 'styled-components'
-import media from 'styled-media-query'
+import styled, { css } from 'styled-components';
+import media from 'styled-media-query';
 
-import { GameCardSliderProps } from '.'
+import { GameCardSliderProps } from '.';
 
-type WrapperProps = Pick<GameCardSliderProps, 'color'>
+type WrapperProps = Pick<GameCardSliderProps, 'color'>;
 
 export const Wrapper = styled.section<WrapperProps>`
   ${({ theme, color }) => css`
@@ -62,4 +62,4 @@ export const Wrapper = styled.section<WrapperProps>`
       visibility: hidden;
     }
   `}
-`
+`;

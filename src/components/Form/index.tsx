@@ -1,8 +1,8 @@
-import styled, { css } from 'styled-components'
-import { darken } from 'polished'
+import styled, { css } from 'styled-components';
+import { darken } from 'polished';
 
-import * as TextFieldStyles from 'components/TextField/styles'
-import * as ButtonStyles from 'components/Button/styles'
+import * as TextFieldStyles from 'components/TextField/styles';
+import * as ButtonStyles from 'components/Button/styles';
 
 export const FormWrapper = styled.div`
   ${({ theme }) => css`
@@ -14,7 +14,7 @@ export const FormWrapper = styled.div`
       margin: ${theme.spacings.medium} auto ${theme.spacings.xsmall};
     }
   `}
-`
+`;
 
 export const FormLink = styled.div`
   ${({ theme }) => css`
@@ -34,4 +34,4 @@ export const FormLink = styled.div`
       }
     }
   `}
-`
+`;

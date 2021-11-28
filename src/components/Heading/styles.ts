@@ -1,7 +1,7 @@
-import styled, { css, DefaultTheme } from 'styled-components'
-import media from 'styled-media-query'
+import styled, { css, DefaultTheme } from 'styled-components';
+import media from 'styled-media-query';
 
-import { HeadingProps, LineColors } from '.'
+import { HeadingProps, LineColors } from '.';
 
 export const wrapperModifiers = {
   small: (theme: DefaultTheme) => css`
@@ -42,7 +42,7 @@ export const wrapperModifiers = {
       border-bottom: 0.5rem solid ${theme.colors[lineColor]};
     }
   `
-}
+};
 
 export const Wrapper = styled.h2<HeadingProps>`
   ${({ theme, color, lineLeft, lineBottom, lineColor, size }) => css`
@@ -52,4 +52,4 @@ export const Wrapper = styled.h2<HeadingProps>`
     ${lineBottom && wrapperModifiers.lineBottom(theme, lineColor!)}
     ${!!size && wrapperModifiers[size](theme)}
   `}
-`
+`;

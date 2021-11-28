@@ -1,11 +1,11 @@
-import Banner, { BannerProps } from 'components/Banner'
-import Slider, { SliderSettings } from 'components/Slider'
+import Banner, { BannerProps } from 'components/Banner';
+import Slider, { SliderSettings } from 'components/Slider';
 
-import * as S from './styles'
+import * as S from './styles';
 
 export type BannerSliderProps = {
-  items: BannerProps[]
-}
+  items: BannerProps[];
+};
 
 const settings: SliderSettings = {
   dots: true,
@@ -22,7 +22,7 @@ const settings: SliderSettings = {
       }
     }
   ]
-}
+};
 
 const BannerSlider = ({ items }: BannerSliderProps) => (
   <S.Wrapper>
@@ -32,6 +32,6 @@ const BannerSlider = ({ items }: BannerSliderProps) => (
       ))}
     </Slider>
   </S.Wrapper>
-)
+);
 
-export default BannerSlider
+export default BannerSlider;

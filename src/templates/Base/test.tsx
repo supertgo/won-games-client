@@ -1,24 +1,24 @@
-import { render, screen } from 'utils/test-utils'
+import { render, screen } from 'utils/test-utils';
 
-import Base from '.'
+import Base from '.';
 
 jest.mock('components/Menu', () => {
   return {
     __esModule: true,
     default: function Mock() {
-      return <div data-testid="Mock Menu"></div>
+      return <div data-testid="Mock Menu"></div>;
     }
-  }
-})
+  };
+});
 
 jest.mock('components/Footer', () => {
   return {
     __esModule: true,
     default: function Mock() {
-      return <div data-testid="Mock Footer"></div>
+      return <div data-testid="Mock Footer"></div>;
     }
-  }
-})
+  };
+});
 
 describe('<Base />', () => {
   it('should render menu, footer and children', () => {
@@ -26,12 +26,12 @@ describe('<Base />', () => {
       <Base>
         <h1>Heading</h1>
       </Base>
-    )
+    );
 
-    expect(screen.getByTestId('Mock Menu')).toBeInTheDocument()
-    expect(screen.getByTestId('Mock Footer')).toBeInTheDocument()
+    expect(screen.getByTestId('Mock Menu')).toBeInTheDocument();
+    expect(screen.getByTestId('Mock Footer')).toBeInTheDocument();
     expect(
       screen.getByRole('heading', { name: /heading/i })
-    ).toBeInTheDocument()
-  })
-})
+    ).toBeInTheDocument();
+  });
+});

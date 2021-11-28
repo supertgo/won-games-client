@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components'
+import styled, { css } from 'styled-components';
 
 export const Nav = styled.nav`
   ${({ theme }) => css`
@@ -10,13 +10,13 @@ export const Nav = styled.nav`
       border-bottom: 0.1rem solid ${theme.colors.lightGray};
     }
   `}
-`
+`;
 
 export const Username = styled.span`
   ${({ theme }) => css`
     padding: 0 ${theme.spacings.xxsmall};
   `}
-`
+`;
 
 export const Link = styled.a`
   ${({ theme }) => css`
@@ -42,4 +42,4 @@ export const Link = styled.a`
       margin-left: ${theme.spacings.xsmall};
     }
   `}
-`
+`;

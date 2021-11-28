@@ -1,63 +1,63 @@
-import { useEffect, useState } from 'react'
-import xor from 'lodash.xor'
-import { Close } from '@styled-icons/material-outlined/Close'
-import { FilterList } from '@styled-icons/material-outlined/FilterList'
+import { useEffect, useState } from 'react';
+import xor from 'lodash.xor';
+import { Close } from '@styled-icons/material-outlined/Close';
+import { FilterList } from '@styled-icons/material-outlined/FilterList';
 
-import Heading from 'components/Heading'
-import Button from 'components/Button'
-import Checkbox from 'components/Checkbox'
-import Radio from 'components/Radio'
+import Heading from 'components/Heading';
+import Button from 'components/Button';
+import Checkbox from 'components/Checkbox';
+import Radio from 'components/Radio';
 
-import * as S from './styles'
-import { ParsedUrlQueryInput } from 'querystring'
+import * as S from './styles';
+import { ParsedUrlQueryInput } from 'querystring';
 
 export type ItemProps = {
-  title: string
-  name: string
-  type: string
-  fields: Field[]
-}
+  title: string;
+  name: string;
+  type: string;
+  fields: Field[];
+};
 
 type Field = {
-  label: string
-  name: string
-}
+  label: string;
+  name: string;
+};
 
-type Values = ParsedUrlQueryInput
+type Values = ParsedUrlQueryInput;
 
 export type ExploreSidebarProps = {
-  items: ItemProps[]
-  initialValues?: Values
-  onFilter: (values: Values) => void
-}
+  items: ItemProps[];
+  initialValues?: Values;
+  onFilter: (values: Values) => void;
+};
 
 const ExploreSidebar = ({
   items,
   onFilter,
   initialValues = {}
 }: ExploreSidebarProps) => {
-  const [values, setValues] = useState(initialValues)
-  const [isOpen, setIsOpen] = useState(false)
+  const [values, setValues] = useState(initialValues);
+  const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
-    onFilter(values)
+    onFilter(values);
     // this method comes from another template
     // that we don't have access
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [values])
+  }, [values]);
 
   const handleRadio = (name: string, value: string | boolean) => {
-    setValues((s) => ({ ...s, [name]: value }))
-  }
+    setValues((s) => ({ ...s, [name]: value }));
+  };
 
   const handleCheckbox = (name: string, value: string) => {
-    const currentList = (values[name] as []) || []
-    setValues((s) => ({ ...s, [name]: xor(currentList, [value]) }))
-  }
+    const currentList = (values[name] as []) || [];
+    setValues((s) => ({ ...s, [name]: xor(currentList, [value]) }));
+  };
 
   const handleFilterMenu = () => {
-    setIsOpen(false)
-  }
+    setIsOpen(false);
+  };
 
   return (
     <S.Wrapper isOpen={isOpen}>
@@ -113,7 +113,7 @@ const ExploreSidebar = ({
         </Button>
       </S.Footer>
     </S.Wrapper>
-  )
-}
+  );
+};
 
-export default ExploreSidebar
+export default ExploreSidebar;

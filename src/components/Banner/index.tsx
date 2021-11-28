@@ -1,18 +1,18 @@
-import Ribbon, { RibbonColors, RibbonSizes } from 'components/Ribbon'
-import Button from 'components/Button'
+import Ribbon, { RibbonColors, RibbonSizes } from 'components/Ribbon';
+import Button from 'components/Button';
 
-import * as S from './styles'
+import * as S from './styles';
 
 export type BannerProps = {
-  img: string
-  title: string
-  subtitle: string
-  buttonLabel: string
-  buttonLink: string
-  ribbon?: React.ReactNode
-  ribbonColor?: RibbonColors
-  ribbonSize?: RibbonSizes
-}
+  img: string;
+  title: string;
+  subtitle: string;
+  buttonLabel: string;
+  buttonLink: string;
+  ribbon?: React.ReactNode;
+  ribbonColor?: RibbonColors;
+  ribbonSize?: RibbonSizes;
+};
 
 const Banner = ({
   img,
@@ -41,6 +41,6 @@ const Banner = ({
       </Button>
     </S.Caption>
   </S.Wrapper>
-)
+);
 
-export default Banner
+export default Banner;

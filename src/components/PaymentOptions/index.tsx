@@ -1,25 +1,25 @@
-import { useState } from 'react'
-import { Add, ShoppingCart } from '@styled-icons/material-outlined'
+import { useState } from 'react';
+import { Add, ShoppingCart } from '@styled-icons/material-outlined';
 
-import Button from 'components/Button'
-import Heading from 'components/Heading'
-import Radio from 'components/Radio'
+import Button from 'components/Button';
+import Heading from 'components/Heading';
+import Radio from 'components/Radio';
 
-import * as S from './styles'
+import * as S from './styles';
 
 export type PaymentOptionsProps = {
-  cards?: PaymentCard[]
-  handlePayment: () => void
-}
+  cards?: PaymentCard[];
+  handlePayment: () => void;
+};
 
 export type PaymentCard = {
-  number: string
-  flag: string
-  img: string
-}
+  number: string;
+  flag: string;
+  img: string;
+};
 
 const PaymentOptions = ({ cards, handlePayment }: PaymentOptionsProps) => {
-  const [checked, setChecked] = useState(false)
+  const [checked, setChecked] = useState(false);
 
   return (
     <S.Wrapper>
@@ -63,7 +63,7 @@ const PaymentOptions = ({ cards, handlePayment }: PaymentOptionsProps) => {
         </Button>
       </S.Footer>
     </S.Wrapper>
-  )
-}
+  );
+};
 
-export default PaymentOptions
+export default PaymentOptions;

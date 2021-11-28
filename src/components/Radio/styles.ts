@@ -1,10 +1,10 @@
-import styled, { css } from 'styled-components'
-import { RadioProps } from '.'
+import styled, { css } from 'styled-components';
+import { RadioProps } from '.';
 
 export const Wrapper = styled.div`
   display: flex;
   align-items: center;
-`
+`;
 
 export const Input = styled.input`
   ${({ theme }) => css`
@@ -42,7 +42,7 @@ export const Input = styled.input`
       }
     }
   `}
-`
+`;
 
 export const Label = styled.label<Pick<RadioProps, 'labelColor'>>`
   ${({ theme, labelColor }) => css`
@@ -51,4 +51,4 @@ export const Label = styled.label<Pick<RadioProps, 'labelColor'>>`
     line-height: 1;
     cursor: pointer;
   `}
-`
+`;

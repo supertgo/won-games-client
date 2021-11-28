@@ -1,5 +1,5 @@
-import { Story, Meta } from '@storybook/react/types-6-0'
-import ProfileMenu, { ProfileMenuProps } from '.'
+import { Story, Meta } from '@storybook/react/types-6-0';
+import ProfileMenu, { ProfileMenuProps } from '.';
 
 export default {
   title: 'Profile/ProfileMenu',
@@ -9,8 +9,8 @@ export default {
       default: 'won-dark'
     }
   }
-} as Meta
+} as Meta;
 
 export const Default: Story<ProfileMenuProps> = (args) => (
   <ProfileMenu {...args} />
-)
+);

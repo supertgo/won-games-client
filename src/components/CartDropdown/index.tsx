@@ -1,8 +1,8 @@
-import CartIcon from 'components/CartIcon'
-import CartList from 'components/CartList'
-import Dropdown from 'components/Dropdown'
+import CartIcon from 'components/CartIcon';
+import CartList from 'components/CartList';
+import Dropdown from 'components/Dropdown';
 
-import * as S from './styles'
+import * as S from './styles';
 
 const CartDropdown = () => (
   <S.Wrapper>
@@ -10,6 +10,6 @@ const CartDropdown = () => (
       <CartList hasButton />
     </Dropdown>
   </S.Wrapper>
-)
+);
 
-export default CartDropdown
+export default CartDropdown;

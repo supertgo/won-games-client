@@ -1,25 +1,28 @@
-import { ParsedUrlQueryInput } from 'querystring'
-import { useRouter } from 'next/router'
+import { ParsedUrlQueryInput } from 'querystring';
+import { useRouter } from 'next/router';
 
-import { useQueryGames } from 'graphql/queries/games'
-import { parseQueryStringToFilter, parseQueryStringToWhere } from 'utils/filter'
+import { useQueryGames } from 'graphql/queries/games';
+import {
+  parseQueryStringToFilter,
+  parseQueryStringToWhere
+} from 'utils/filter';
 
-import Base from 'templates/Base'
-import { KeyboardArrowDown as ArrowDown } from '@styled-icons/material-outlined/KeyboardArrowDown'
+import Base from 'templates/Base';
+import { KeyboardArrowDown as ArrowDown } from '@styled-icons/material-outlined/KeyboardArrowDown';
 
-import ExploreSidebar, { ItemProps } from 'components/ExploreSidebar'
-import GameCard from 'components/GameCard'
-import { Grid } from 'components/Grid'
+import ExploreSidebar, { ItemProps } from 'components/ExploreSidebar';
+import GameCard from 'components/GameCard';
+import { Grid } from 'components/Grid';
 
-import * as S from './styles'
-import Empty from 'components/Empty'
+import * as S from './styles';
+import Empty from 'components/Empty';
 
 export type GamesTemplateProps = {
-  filterItems: ItemProps[]
-}
+  filterItems: ItemProps[];
+};
 
 const GamesTemplate = ({ filterItems }: GamesTemplateProps) => {
-  const { push, query } = useRouter()
+  const { push, query } = useRouter();
 
   const { data, loading, fetchMore } = useQueryGames({
     notifyOnNetworkStatusChange: true,
@@ -28,25 +31,25 @@ const GamesTemplate = ({ filterItems }: GamesTemplateProps) => {
       where: parseQueryStringToWhere({ queryString: query, filterItems }),
       sort: query.sort as string | null
     }
-  })
+  });
 
-  if (!data) return <p>loading...</p>
+  if (!data) return <p>loading...</p>;
 
-  const { games, gamesConnection } = data
+  const { games, gamesConnection } = data;
 
-  const hasMoreGames = games.length < (gamesConnection?.values?.length || 0)
+  const hasMoreGames = games.length < (gamesConnection?.values?.length || 0);
 
   const handleFilter = (items: ParsedUrlQueryInput) => {
     push({
       pathname: '/games',
       query: items
-    })
-    return
-  }
+    });
+    return;
+  };
 
   const handleShowMore = () => {
-    fetchMore({ variables: { limit: 15, start: data?.games.length } })
-  }
+    fetchMore({ variables: { limit: 15, start: data?.games.length } });
+  };
 
   return (
     <Base>
@@ -102,7 +105,7 @@ const GamesTemplate = ({ filterItems }: GamesTemplateProps) => {
         </section>
       </S.Main>
     </Base>
-  )
-}
+  );
+};
 
-export default GamesTemplate
+export default GamesTemplate;

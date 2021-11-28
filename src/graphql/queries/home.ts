@@ -1,7 +1,7 @@
-import { gql } from '@apollo/client'
-import { BannerFragment } from 'graphql/fragments/banner'
-import { GameFragment } from 'graphql/fragments/game'
-import { HighlightFragment } from 'graphql/fragments/highlight'
+import { gql } from '@apollo/client';
+import { BannerFragment } from 'graphql/fragments/banner';
+import { GameFragment } from 'graphql/fragments/game';
+import { HighlightFragment } from 'graphql/fragments/highlight';
 
 // GET_HOME | QUERY_HOME
 export const QUERY_HOME = gql`
@@ -67,4 +67,4 @@ export const QUERY_HOME = gql`
   ${BannerFragment}
   ${GameFragment}
   ${HighlightFragment}
-`
+`;

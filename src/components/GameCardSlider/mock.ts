@@ -53,4 +53,4 @@ export default [
     price: 235,
     promotionalPrice: 215
   }
-]
+];

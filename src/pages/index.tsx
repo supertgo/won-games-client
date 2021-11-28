@@ -1,11 +1,11 @@
-import Home, { HomeTemplateProps } from 'templates/Home'
-import { initializeApollo } from 'utils/apollo'
-import { QueryHome, QueryHomeVariables } from 'graphql/generated/QueryHome'
-import { QUERY_HOME } from 'graphql/queries/home'
-import { bannerMapper, gamesMapper, highlightMapper } from 'utils/mappers'
+import Home, { HomeTemplateProps } from 'templates/Home';
+import { initializeApollo } from 'utils/apollo';
+import { QueryHome, QueryHomeVariables } from 'graphql/generated/QueryHome';
+import { QUERY_HOME } from 'graphql/queries/home';
+import { bannerMapper, gamesMapper, highlightMapper } from 'utils/mappers';
 
 export default function Index(props: HomeTemplateProps) {
-  return <Home {...props} />
+  return <Home {...props} />;
 }
 
 // ATENÇÃO:
@@ -15,8 +15,8 @@ export default function Index(props: HomeTemplateProps) {
 // getServerSideProps => gerar via ssr a cada request (nunca vai para o bundle do client)
 // getInitialProps => gerar via ssr a cada request (vai para o client, faz hydrate do lado do client depois do 1 req)
 export async function getStaticProps() {
-  const apolloClient = initializeApollo()
-  const TODAY = new Date().toISOString().slice(0, 10) // 2021-01-27
+  const apolloClient = initializeApollo();
+  const TODAY = new Date().toISOString().slice(0, 10); // 2021-01-27
 
   const {
     data: { banners, newGames, upcomingGames, freeGames, sections }
@@ -24,7 +24,7 @@ export async function getStaticProps() {
     query: QUERY_HOME,
     variables: { date: TODAY },
     fetchPolicy: 'no-cache' // garantir sempre dado novo na geração do estático!
-  })
+  });
 
   return {
     revalidate: 10,
@@ -42,5 +42,5 @@ export async function getStaticProps() {
       freeGames: gamesMapper(freeGames),
       freeHighlight: highlightMapper(sections?.freeGames?.highlight)
     }
-  }
+  };
 }

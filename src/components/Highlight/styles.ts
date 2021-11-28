@@ -1,8 +1,8 @@
-import styled, { css } from 'styled-components'
-import media from 'styled-media-query'
-import { HighlightProps } from '.'
+import styled, { css } from 'styled-components';
+import media from 'styled-media-query';
+import { HighlightProps } from '.';
 
-type WrapperProps = Pick<HighlightProps, 'backgroundImage' | 'alignment'>
+type WrapperProps = Pick<HighlightProps, 'backgroundImage' | 'alignment'>;
 
 const wrapperModifiers = {
   right: () => css`
@@ -25,7 +25,7 @@ const wrapperModifiers = {
       justify-self: end;
     }
   `
-}
+};
 
 export const Wrapper = styled.section<WrapperProps>`
   ${({ backgroundImage, alignment }) => css`
@@ -50,7 +50,7 @@ export const Wrapper = styled.section<WrapperProps>`
 
     ${wrapperModifiers[alignment!]()}
   `}
-`
+`;
 
 export const FloatImage = styled.img`
   ${({ theme }) => css`
@@ -64,7 +64,7 @@ export const FloatImage = styled.img`
       max-height: 32rem;
     `}
   `}
-`
+`;
 
 export const Content = styled.div`
   ${({ theme }) => css`
@@ -77,7 +77,7 @@ export const Content = styled.div`
       padding: ${theme.spacings.large};
     `}
   `}
-`
+`;
 
 export const Title = styled.h2`
   ${({ theme }) => css`
@@ -89,7 +89,7 @@ export const Title = styled.h2`
       font-size: ${theme.font.sizes.xxlarge};
     `}
   `}
-`
+`;
 
 export const SubTitle = styled.h3`
   ${({ theme }) => css`
@@ -102,4 +102,4 @@ export const SubTitle = styled.h3`
       font-size: ${theme.font.sizes.large};
     `}
   `}
-`
+`;

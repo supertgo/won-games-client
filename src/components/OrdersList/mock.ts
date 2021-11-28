@@ -23,4 +23,4 @@ export default [
       purchaseDate: 'Purchase made on 08/20/2020 at 21:12'
     }
   }
-]
+];

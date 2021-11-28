@@ -21,4 +21,4 @@ export default [
     buttonLabel: 'Buy now',
     buttonLink: '/games/defy-death'
   }
-]
+];

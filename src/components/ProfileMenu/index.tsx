@@ -1,16 +1,16 @@
-import Link from 'next/link'
+import Link from 'next/link';
 import {
   AccountCircle,
   CreditCard,
   ExitToApp,
   FormatListBulleted
-} from '@styled-icons/material-outlined'
+} from '@styled-icons/material-outlined';
 
-import * as S from './styles'
+import * as S from './styles';
 
 export type ProfileMenuProps = {
-  activeLink?: '/profile/me' | '/profile/cards' | '/profile/orders' | string
-}
+  activeLink?: '/profile/me' | '/profile/cards' | '/profile/orders' | string;
+};
 
 const ProfileMenu = ({ activeLink }: ProfileMenuProps) => (
   <S.Nav>
@@ -42,6 +42,6 @@ const ProfileMenu = ({ activeLink }: ProfileMenuProps) => (
       </S.Link>
     </Link>
   </S.Nav>
-)
+);
 
-export default ProfileMenu
+export default ProfileMenu;

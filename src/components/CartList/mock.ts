@@ -11,4 +11,4 @@ export default [
     title: 'Borderlands 3',
     price: 'R$ 215,00'
   }
-]
+];

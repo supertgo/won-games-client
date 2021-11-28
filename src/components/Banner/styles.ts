@@ -1,7 +1,7 @@
-import styled, { css } from 'styled-components'
-import media from 'styled-media-query'
+import styled, { css } from 'styled-components';
+import media from 'styled-media-query';
 
-import * as RibbonStyles from 'components/Ribbon/styles'
+import * as RibbonStyles from 'components/Ribbon/styles';
 
 export const Wrapper = styled.main`
   position: relative;
@@ -19,11 +19,11 @@ export const Wrapper = styled.main`
   ${media.greaterThan('medium')`
     box-shadow: 0 0.4rem 0.5rem 0 rgba(0, 0, 0, 0.2);
   `}
-`
+`;
 
 type ImageProps = {
-  src: string
-}
+  src: string;
+};
 
 export const Image = styled.div<ImageProps>`
   ${({ theme, src }) => css`
@@ -38,7 +38,7 @@ export const Image = styled.div<ImageProps>`
       height: 58rem;
     `}
   `}
-`
+`;
 
 export const Caption = styled.div`
   ${({ theme }) => css`
@@ -54,7 +54,7 @@ export const Caption = styled.div`
       left: 0;
     `}
   `}
-`
+`;
 
 export const Title = styled.h2`
   ${({ theme }) => css`
@@ -66,7 +66,7 @@ export const Title = styled.h2`
       font-size: ${theme.font.sizes.xxlarge};
     `}
   `}
-`
+`;
 
 export const Subtitle = styled.h3`
   ${({ theme }) => css`
@@ -84,4 +84,4 @@ export const Subtitle = styled.h3`
       font-size: ${theme.font.sizes.large};
     `}
   `}
-`
+`;

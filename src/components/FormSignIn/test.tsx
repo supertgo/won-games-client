@@ -1,32 +1,32 @@
-import { render, screen } from 'utils/test-utils'
+import { render, screen } from 'utils/test-utils';
 
-import FormSignIn from '.'
+import FormSignIn from '.';
 
 describe('<FormSignIn />', () => {
   it('should render the form', () => {
-    const { container } = render(<FormSignIn />)
+    const { container } = render(<FormSignIn />);
 
-    expect(screen.getByPlaceholderText(/email/i)).toBeInTheDocument()
-    expect(screen.getByPlaceholderText(/password/i)).toBeInTheDocument()
+    expect(screen.getByPlaceholderText(/email/i)).toBeInTheDocument();
+    expect(screen.getByPlaceholderText(/password/i)).toBeInTheDocument();
     expect(
       screen.getByRole('button', { name: /sign in now/i })
-    ).toBeInTheDocument()
+    ).toBeInTheDocument();
 
-    expect(container.parentElement).toMatchSnapshot()
-  })
+    expect(container.parentElement).toMatchSnapshot();
+  });
 
   it('should render the forgot password link', () => {
-    render(<FormSignIn />)
+    render(<FormSignIn />);
 
     expect(
       screen.getByRole('link', { name: /forgot your password\?/i })
-    ).toBeInTheDocument()
-  })
+    ).toBeInTheDocument();
+  });
 
   it('should render text to sign up if already have an account', () => {
-    render(<FormSignIn />)
+    render(<FormSignIn />);
 
-    expect(screen.getByRole('link', { name: /sign up/i })).toBeInTheDocument()
-    expect(screen.getByText(/don’t have an account\?/i)).toBeInTheDocument()
-  })
-})
+    expect(screen.getByRole('link', { name: /sign up/i })).toBeInTheDocument();
+    expect(screen.getByText(/don’t have an account\?/i)).toBeInTheDocument();
+  });
+});

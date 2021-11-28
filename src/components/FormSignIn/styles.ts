@@ -1,5 +1,5 @@
-import styled, { css } from 'styled-components'
-import { lighten } from 'polished'
+import styled, { css } from 'styled-components';
+import { lighten } from 'polished';
 
 export const ForgotPassword = styled.a`
   ${({ theme }) => css`
@@ -13,4 +13,4 @@ export const ForgotPassword = styled.a`
       color: ${lighten(0.2, theme.colors.black)};
     }
   `}
-`
+`;

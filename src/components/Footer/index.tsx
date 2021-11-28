@@ -1,8 +1,8 @@
-import Link from 'next/link'
+import Link from 'next/link';
 
-import Heading from 'components/Heading'
-import Logo from 'components/Logo'
-import * as S from './styles'
+import Heading from 'components/Heading';
+import Logo from 'components/Logo';
+import * as S from './styles';
 
 const Footer = () => (
   <S.Wrapper>
@@ -83,6 +83,6 @@ const Footer = () => (
 
     <S.Copyright>Won Games 2020 © All rights reserved.</S.Copyright>
   </S.Wrapper>
-)
+);
 
-export default Footer
+export default Footer;

@@ -1,28 +1,28 @@
-import Base from 'templates/Base'
+import Base from 'templates/Base';
 
-import GameInfo, { GameInfoProps } from 'components/GameInfo'
-import Gallery, { GalleryImageProps } from 'components/Gallery'
-import GameDetails, { GameDetailsProps } from 'components/GameDetails'
-import TextContent from 'components/TextContent'
-import Showcase from 'components/Showcase'
-import { Divider } from 'components/Divider'
-import { GameCardProps } from 'components/GameCard'
-import { HighlightProps } from 'components/Highlight'
+import GameInfo, { GameInfoProps } from 'components/GameInfo';
+import Gallery, { GalleryImageProps } from 'components/Gallery';
+import GameDetails, { GameDetailsProps } from 'components/GameDetails';
+import TextContent from 'components/TextContent';
+import Showcase from 'components/Showcase';
+import { Divider } from 'components/Divider';
+import { GameCardProps } from 'components/GameCard';
+import { HighlightProps } from 'components/Highlight';
 
-import * as S from './styles'
+import * as S from './styles';
 
 export type GameTemplateProps = {
-  cover: string
-  gameInfo: GameInfoProps
-  gallery?: GalleryImageProps[]
-  description: string
-  details: GameDetailsProps
-  upcomingTitle: string
-  upcomingGames: GameCardProps[]
-  upcomingHighlight: HighlightProps
-  recommendedTitle: string
-  recommendedGames: GameCardProps[]
-}
+  cover: string;
+  gameInfo: GameInfoProps;
+  gallery?: GalleryImageProps[];
+  description: string;
+  details: GameDetailsProps;
+  upcomingTitle: string;
+  upcomingGames: GameCardProps[];
+  upcomingHighlight: HighlightProps;
+  recommendedTitle: string;
+  recommendedGames: GameCardProps[];
+};
 
 const Game = ({
   cover,
@@ -66,6 +66,6 @@ const Game = ({
       <Showcase title={recommendedTitle} games={recommendedGames} />
     </S.Main>
   </Base>
-)
+);
 
-export default Game
+export default Game;

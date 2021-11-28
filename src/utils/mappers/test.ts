@@ -1,10 +1,10 @@
-import { QueryGames_games } from 'graphql/generated/QueryGames'
+import { QueryGames_games } from 'graphql/generated/QueryGames';
 import {
   QueryHome_banners,
   QueryHome_sections_newGames_highlight
-} from 'graphql/generated/QueryHome'
+} from 'graphql/generated/QueryHome';
 
-import { bannerMapper, cartMapper, gamesMapper, highlightMapper } from '.'
+import { bannerMapper, cartMapper, gamesMapper, highlightMapper } from '.';
 
 describe('bannerMapper()', () => {
   it('should return the right format when mapped', () => {
@@ -23,7 +23,7 @@ describe('bannerMapper()', () => {
         color: 'primary',
         size: 'small'
       }
-    } as QueryHome_banners
+    } as QueryHome_banners;
 
     expect(bannerMapper([banner])).toStrictEqual([
       {
@@ -36,14 +36,14 @@ describe('bannerMapper()', () => {
         ribbonColor: 'primary',
         ribbonSize: 'small'
       }
-    ])
-  })
-})
+    ]);
+  });
+});
 
 describe('gamesMapper()', () => {
   it('should return an empty array if there are no games', () => {
-    expect(gamesMapper(null)).toStrictEqual([])
-  })
+    expect(gamesMapper(null)).toStrictEqual([]);
+  });
 
   it('should return the correct format when mapped', () => {
     const game = {
@@ -59,7 +59,7 @@ describe('gamesMapper()', () => {
         url: '/image.jpg'
       },
       price: 10
-    } as QueryGames_games
+    } as QueryGames_games;
 
     expect(gamesMapper([game])).toStrictEqual([
       {
@@ -70,14 +70,14 @@ describe('gamesMapper()', () => {
         img: 'http://localhost:1337/image.jpg',
         price: 10
       }
-    ])
-  })
-})
+    ]);
+  });
+});
 
 describe('highlightMapper()', () => {
   it('should return empty object if no highlight', () => {
-    expect(highlightMapper(null)).toStrictEqual({})
-  })
+    expect(highlightMapper(null)).toStrictEqual({});
+  });
 
   it('should return mapped highlight', () => {
     const highlight = {
@@ -92,7 +92,7 @@ describe('highlightMapper()', () => {
       floatImage: {
         url: '/image.jpg'
       }
-    } as QueryHome_sections_newGames_highlight
+    } as QueryHome_sections_newGames_highlight;
 
     expect(highlightMapper(highlight)).toStrictEqual({
       title: 'title',
@@ -102,14 +102,14 @@ describe('highlightMapper()', () => {
       buttonLink: 'button link',
       alignment: 'right',
       floatImage: 'http://localhost:1337/image.jpg'
-    })
-  })
-})
+    });
+  });
+});
 
 describe('cartMapper()', () => {
   it('should return empty array if no games', () => {
-    expect(cartMapper(undefined)).toStrictEqual([])
-  })
+    expect(cartMapper(undefined)).toStrictEqual([]);
+  });
 
   it('should return mapped items', () => {
     const game = {
@@ -119,7 +119,7 @@ describe('cartMapper()', () => {
       },
       name: 'game',
       price: 10
-    } as QueryGames_games
+    } as QueryGames_games;
 
     expect(cartMapper([game])).toStrictEqual([
       {
@@ -128,6 +128,6 @@ describe('cartMapper()', () => {
         title: 'game',
         price: '$10.00'
       }
-    ])
-  })
-})
+    ]);
+  });
+});

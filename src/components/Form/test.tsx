@@ -1,6 +1,6 @@
-import { render } from 'utils/test-utils'
+import { render } from 'utils/test-utils';
 
-import { FormLink, FormWrapper } from '.'
+import { FormLink, FormWrapper } from '.';
 
 describe('<Form />', () => {
   it('should render the heading', () => {
@@ -10,7 +10,7 @@ describe('<Form />', () => {
           My nice <a href="#">link</a>
         </FormLink>
       </FormWrapper>
-    )
+    );
 
     expect(container.parentElement).toMatchInlineSnapshot(`
       .c0 .sc-jSFkmK {
@@ -59,6 +59,6 @@ describe('<Form />', () => {
           </div>
         </div>
       </body>
-    `)
-  })
-})
+    `);
+  });
+});

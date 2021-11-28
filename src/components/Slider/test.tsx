@@ -1,7 +1,7 @@
-import 'match-media-mock'
-import { render, screen } from 'utils/test-utils'
+import 'match-media-mock';
+import { render, screen } from 'utils/test-utils';
 
-import Slider from '.'
+import Slider from '.';
 
 describe('<Slider />', () => {
   it('should render children as slider item', () => {
@@ -10,16 +10,16 @@ describe('<Slider />', () => {
         <p>Item 1</p>
         <p>Item 2</p>
       </Slider>
-    )
+    );
 
     expect(
       screen.getByText(/item 1/i).parentElement?.parentElement
-    ).toHaveClass('slick-slide')
+    ).toHaveClass('slick-slide');
 
     expect(
       screen.getByText(/item 2/i).parentElement?.parentElement
-    ).toHaveClass('slick-slide')
+    ).toHaveClass('slick-slide');
 
-    expect(container.firstChild).toMatchSnapshot()
-  })
-})
+    expect(container.firstChild).toMatchSnapshot();
+  });
+});

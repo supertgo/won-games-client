@@ -1,13 +1,13 @@
-import * as S from './styles'
+import * as S from './styles';
 
-export type RibbonColors = 'primary' | 'secondary'
-export type RibbonSizes = 'normal' | 'small'
+export type RibbonColors = 'primary' | 'secondary';
+export type RibbonSizes = 'normal' | 'small';
 
 export type RibbonProps = {
-  children: React.ReactNode
-  color?: RibbonColors
-  size?: RibbonSizes
-}
+  children: React.ReactNode;
+  color?: RibbonColors;
+  size?: RibbonSizes;
+};
 
 const Ribbon = ({
   children,
@@ -17,6 +17,6 @@ const Ribbon = ({
   <S.Wrapper color={color} size={size}>
     {children}
   </S.Wrapper>
-)
+);
 
-export default Ribbon
+export default Ribbon;

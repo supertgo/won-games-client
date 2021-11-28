@@ -1,18 +1,18 @@
-import Link from 'next/link'
+import Link from 'next/link';
 import {
   AccountCircle,
   FavoriteBorder,
   ExitToApp
-} from '@styled-icons/material-outlined'
-import { ChevronDown } from '@styled-icons/boxicons-regular/ChevronDown'
+} from '@styled-icons/material-outlined';
+import { ChevronDown } from '@styled-icons/boxicons-regular/ChevronDown';
 
-import Dropdown from 'components/Dropdown'
+import Dropdown from 'components/Dropdown';
 
-import * as S from './styles'
+import * as S from './styles';
 
 export type UserDropdownProps = {
-  username: string
-}
+  username: string;
+};
 
 const UserDropdown = ({ username }: UserDropdownProps) => (
   <Dropdown
@@ -46,6 +46,6 @@ const UserDropdown = ({ username }: UserDropdownProps) => (
       </Link>
     </S.Nav>
   </Dropdown>
-)
+);
 
-export default UserDropdown
+export default UserDropdown;

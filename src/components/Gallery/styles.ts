@@ -1,5 +1,5 @@
-import styled, { css } from 'styled-components'
-import media from 'styled-media-query'
+import styled, { css } from 'styled-components';
+import media from 'styled-media-query';
 
 export const Wrapper = styled.div`
   ${({ theme }) => css`
@@ -42,11 +42,11 @@ export const Wrapper = styled.div`
       overflow-x: hidden;
     `}
   `}
-`
+`;
 
 type ModalProps = {
-  isOpen: boolean
-}
+  isOpen: boolean;
+};
 
 const modalModifiers = {
   open: () => css`
@@ -57,7 +57,7 @@ const modalModifiers = {
     opacity: 0;
     pointer-events: none;
   `
-}
+};
 
 export const Modal = styled.div<ModalProps>`
   ${({ theme, isOpen }) => css`
@@ -76,7 +76,7 @@ export const Modal = styled.div<ModalProps>`
     ${isOpen && modalModifiers.open()}
     ${!isOpen && modalModifiers.close()}
   `}
-`
+`;
 
 export const Close = styled.div`
   ${({ theme }) => css`
@@ -89,9 +89,9 @@ export const Close = styled.div`
     height: 100%;
     text-align: right;
   `}
-`
+`;
 
 export const Content = styled.div`
   max-width: min(120rem, 100%);
   max-height: 80rem;
-`
+`;

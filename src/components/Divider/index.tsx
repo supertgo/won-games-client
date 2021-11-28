@@ -1,5 +1,5 @@
-import styled, { css } from 'styled-components'
-import media from 'styled-media-query'
+import styled, { css } from 'styled-components';
+import media from 'styled-media-query';
 
 export const Divider = styled.hr`
   ${({ theme }) => css`
@@ -12,4 +12,4 @@ export const Divider = styled.hr`
       margin: calc(${theme.spacings.xxlarge} * 2.5) auto ${theme.spacings.xxlarge};
     `}
   `}
-`
+`;

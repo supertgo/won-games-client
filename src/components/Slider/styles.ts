@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from 'styled-components';
 
 export const Wrapper = styled.section`
   .slick-slider {
@@ -100,4 +100,4 @@ export const Wrapper = styled.section`
   .slick-arrow.slick-hidden {
     display: none;
   }
-`
+`;

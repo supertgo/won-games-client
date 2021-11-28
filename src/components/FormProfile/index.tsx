@@ -1,8 +1,8 @@
-import Button from 'components/Button'
-import Heading from 'components/Heading'
-import TextField from 'components/TextField'
+import Button from 'components/Button';
+import Heading from 'components/Heading';
+import TextField from 'components/TextField';
 
-import * as S from './styles'
+import * as S from './styles';
 
 const FormProfile = () => (
   <>
@@ -44,6 +44,6 @@ const FormProfile = () => (
       <Button size="large">Save</Button>
     </S.Form>
   </>
-)
+);
 
-export default FormProfile
+export default FormProfile;

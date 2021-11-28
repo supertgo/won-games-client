@@ -1,12 +1,12 @@
-import { useState, useEffect, useRef } from 'react'
-import { ArrowBackIos as ArrowLeft } from '@styled-icons/material-outlined/ArrowBackIos'
-import { ArrowForwardIos as ArrowRight } from '@styled-icons/material-outlined/ArrowForwardIos'
-import { Close } from '@styled-icons/material-outlined/Close'
-import SlickSlider from 'react-slick'
+import { useState, useEffect, useRef } from 'react';
+import { ArrowBackIos as ArrowLeft } from '@styled-icons/material-outlined/ArrowBackIos';
+import { ArrowForwardIos as ArrowRight } from '@styled-icons/material-outlined/ArrowForwardIos';
+import { Close } from '@styled-icons/material-outlined/Close';
+import SlickSlider from 'react-slick';
 
-import Slider, { SliderSettings } from 'components/Slider'
+import Slider, { SliderSettings } from 'components/Slider';
 
-import * as S from './styles'
+import * as S from './styles';
 
 const commonSettings: SliderSettings = {
   infinite: false,
@@ -14,7 +14,7 @@ const commonSettings: SliderSettings = {
   arrows: true,
   nextArrow: <ArrowRight aria-label="next image" />,
   prevArrow: <ArrowLeft aria-label="previous image" />
-}
+};
 
 const settings: SliderSettings = {
   ...commonSettings,
@@ -45,34 +45,34 @@ const settings: SliderSettings = {
       }
     }
   ]
-}
+};
 
 const modalSettings: SliderSettings = {
   ...commonSettings,
   slidesToShow: 1
-}
+};
 
 export type GalleryImageProps = {
-  src: string
-  label: string
-}
+  src: string;
+  label: string;
+};
 
 export type GalleryProps = {
-  items: GalleryImageProps[]
-}
+  items: GalleryImageProps[];
+};
 
 const Gallery = ({ items }: GalleryProps) => {
-  const slider = useRef<SlickSlider>(null)
-  const [isOpen, setIsOpen] = useState(false)
+  const slider = useRef<SlickSlider>(null);
+  const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
     const handleKeyUp = ({ key }: KeyboardEvent) => {
-      key === 'Escape' && setIsOpen(false)
-    }
+      key === 'Escape' && setIsOpen(false);
+    };
 
-    window.addEventListener('keyup', handleKeyUp)
-    return () => window.removeEventListener('keyup', handleKeyUp)
-  }, [])
+    window.addEventListener('keyup', handleKeyUp);
+    return () => window.removeEventListener('keyup', handleKeyUp);
+  }, []);
 
   return (
     <S.Wrapper>
@@ -84,8 +84,8 @@ const Gallery = ({ items }: GalleryProps) => {
             src={item.src}
             alt={`Thumb - ${item.label}`}
             onClick={() => {
-              setIsOpen(true)
-              slider.current!.slickGoTo(index, true)
+              setIsOpen(true);
+              slider.current!.slickGoTo(index, true);
             }}
           />
         ))}
@@ -109,7 +109,7 @@ const Gallery = ({ items }: GalleryProps) => {
         </S.Content>
       </S.Modal>
     </S.Wrapper>
-  )
-}
+  );
+};
 
-export default Gallery
+export default Gallery;

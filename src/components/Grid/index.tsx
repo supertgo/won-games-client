@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components'
+import styled, { css } from 'styled-components';
 
 export const Grid = styled.div`
   ${({ theme }) => css`
@@ -7,4 +7,4 @@ export const Grid = styled.div`
     grid-gap: ${theme.spacings.medium};
     margin: ${theme.spacings.medium} 0;
   `}
-`
+`;

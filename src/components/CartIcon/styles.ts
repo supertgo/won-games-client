@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components'
+import styled, { css } from 'styled-components';
 
 export const Wrapper = styled.div`
   ${({ theme }) => css`
@@ -7,7 +7,7 @@ export const Wrapper = styled.div`
     height: 2.4rem;
     position: relative;
   `}
-`
+`;
 
 export const Badge = styled.span`
   ${({ theme }) => css`
@@ -24,4 +24,4 @@ export const Badge = styled.span`
     top: -0.4rem;
     right: -0.4rem;
   `}
-`
+`;

@@ -1,24 +1,24 @@
-import Link from 'next/link'
+import Link from 'next/link';
 
-import { useState } from 'react'
-import { Menu2 as MenuIcon } from '@styled-icons/remix-fill/Menu2'
-import { Search as SearchIcon } from '@styled-icons/material-outlined/Search'
-import { Close as CloseIcon } from '@styled-icons/material-outlined/Close'
+import { useState } from 'react';
+import { Menu2 as MenuIcon } from '@styled-icons/remix-fill/Menu2';
+import { Search as SearchIcon } from '@styled-icons/material-outlined/Search';
+import { Close as CloseIcon } from '@styled-icons/material-outlined/Close';
 
-import Button from 'components/Button'
-import Logo from 'components/Logo'
-import MediaMatch from 'components/MediaMatch'
-import * as S from './styles'
-import CartDropdown from 'components/CartDropdown'
-import CartIcon from 'components/CartIcon'
-import UserDropdown from 'components/UserDropdown'
+import Button from 'components/Button';
+import Logo from 'components/Logo';
+import MediaMatch from 'components/MediaMatch';
+import * as S from './styles';
+import CartDropdown from 'components/CartDropdown';
+import CartIcon from 'components/CartIcon';
+import UserDropdown from 'components/UserDropdown';
 
 export type MenuProps = {
-  username?: string
-}
+  username?: string;
+};
 
 const Menu = ({ username }: MenuProps) => {
-  const [isOpen, setIsOpen] = useState(false)
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
     <S.Wrapper>
@@ -111,7 +111,7 @@ const Menu = ({ username }: MenuProps) => {
         )}
       </S.MenuFull>
     </S.Wrapper>
-  )
-}
+  );
+};
 
-export default Menu
+export default Menu;

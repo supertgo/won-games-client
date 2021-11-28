@@ -1,5 +1,5 @@
-import { Story, Meta } from '@storybook/react/types-6-0'
-import Menu, { MenuProps } from '.'
+import { Story, Meta } from '@storybook/react/types-6-0';
+import Menu, { MenuProps } from '.';
 
 export default {
   title: 'Menu',
@@ -10,12 +10,12 @@ export default {
       default: 'won-dark'
     }
   }
-} as Meta
+} as Meta;
 
-export const Default: Story<MenuProps> = (args) => <Menu {...args} />
+export const Default: Story<MenuProps> = (args) => <Menu {...args} />;
 
-export const Logged: Story<MenuProps> = (args) => <Menu {...args} />
+export const Logged: Story<MenuProps> = (args) => <Menu {...args} />;
 
 Logged.args = {
   username: 'John Doe'
-}
+};

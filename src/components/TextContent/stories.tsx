@@ -1,6 +1,6 @@
-import { Story, Meta } from '@storybook/react/types-6-0'
-import TextContent, { TextContentProps } from '.'
-import textMock from './mock'
+import { Story, Meta } from '@storybook/react/types-6-0';
+import TextContent, { TextContentProps } from '.';
+import textMock from './mock';
 
 export default {
   title: 'TextContent',
@@ -11,8 +11,8 @@ export default {
       default: 'won-dark'
     }
   }
-} as Meta
+} as Meta;
 
 export const Default: Story<TextContentProps> = (args) => (
   <TextContent {...args} />
-)
+);

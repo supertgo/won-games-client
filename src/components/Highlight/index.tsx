@@ -1,15 +1,15 @@
-import Button from 'components/Button'
-import * as S from './styles'
+import Button from 'components/Button';
+import * as S from './styles';
 
 export type HighlightProps = {
-  title: string
-  subtitle: string
-  backgroundImage: string
-  floatImage?: string
-  buttonLabel: string
-  buttonLink: string
-  alignment?: 'right' | 'left'
-}
+  title: string;
+  subtitle: string;
+  backgroundImage: string;
+  floatImage?: string;
+  buttonLabel: string;
+  buttonLink: string;
+  alignment?: 'right' | 'left';
+};
 
 const Highlight = ({
   title,
@@ -30,6 +30,6 @@ const Highlight = ({
       </Button>
     </S.Content>
   </S.Wrapper>
-)
+);
 
-export default Highlight
+export default Highlight;

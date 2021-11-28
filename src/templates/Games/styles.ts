@@ -1,6 +1,6 @@
-import styled, { css } from 'styled-components'
-import media from 'styled-media-query'
-import { Container } from 'components/Container'
+import styled, { css } from 'styled-components';
+import media from 'styled-media-query';
+import { Container } from 'components/Container';
 
 export const Main = styled(Container)`
   ${({ theme }) => css`
@@ -10,14 +10,14 @@ export const Main = styled(Container)`
     gap: ${theme.grid.gutter};
     `}
   `}
-`
+`;
 
 export const ShowMore = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
   height: 10rem;
-`
+`;
 
 export const ShowMoreButton = styled.div`
   ${({ theme }) => css`
@@ -31,7 +31,7 @@ export const ShowMoreButton = styled.div`
       color: ${theme.colors.primary};
     }
   `}
-`
+`;
 export const ShowMoreLoading = styled.img`
   width: 4rem;
-`
+`;

@@ -1,16 +1,16 @@
-import { InputHTMLAttributes } from 'react'
+import { InputHTMLAttributes } from 'react';
 
-import * as S from './styles'
+import * as S from './styles';
 
-type RadioValue = string | ReadonlyArray<string> | number
+type RadioValue = string | ReadonlyArray<string> | number;
 
 export type RadioProps = {
-  onCheck?: (value?: RadioValue) => void
-  label?: string
-  labelColor?: 'white' | 'black'
-  labelFor?: string
-  value?: RadioValue
-} & InputHTMLAttributes<HTMLInputElement>
+  onCheck?: (value?: RadioValue) => void;
+  label?: string;
+  labelColor?: 'white' | 'black';
+  labelFor?: string;
+  value?: RadioValue;
+} & InputHTMLAttributes<HTMLInputElement>;
 
 const Radio = ({
   label,
@@ -21,8 +21,8 @@ const Radio = ({
   ...props
 }: RadioProps) => {
   const onChange = () => {
-    !!onCheck && onCheck(value)
-  }
+    !!onCheck && onCheck(value);
+  };
 
   return (
     <S.Wrapper>
@@ -39,7 +39,7 @@ const Radio = ({
         </S.Label>
       )}
     </S.Wrapper>
-  )
-}
+  );
+};
 
-export default Radio
+export default Radio;

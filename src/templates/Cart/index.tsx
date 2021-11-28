@@ -1,22 +1,22 @@
-import { Container } from 'components/Container'
-import { Divider } from 'components/Divider'
-import { GameCardProps } from 'components/GameCard'
-import { HighlightProps } from 'components/Highlight'
-import PaymentOptions, { PaymentOptionsProps } from 'components/PaymentOptions'
-import CartList, { CartListProps } from 'components/CartList'
-import Heading from 'components/Heading'
-import Showcase from 'components/Showcase'
-import Base from 'templates/Base'
-import { Info } from '@styled-icons/material-outlined/Info'
+import { Container } from 'components/Container';
+import { Divider } from 'components/Divider';
+import { GameCardProps } from 'components/GameCard';
+import { HighlightProps } from 'components/Highlight';
+import PaymentOptions, { PaymentOptionsProps } from 'components/PaymentOptions';
+import CartList, { CartListProps } from 'components/CartList';
+import Heading from 'components/Heading';
+import Showcase from 'components/Showcase';
+import Base from 'templates/Base';
+import { Info } from '@styled-icons/material-outlined/Info';
 
-import * as S from './styles'
+import * as S from './styles';
 
 export type CartProps = {
-  recommendedTitle: string
-  recommendedGames: GameCardProps[]
-  recommendedHighlight: HighlightProps
+  recommendedTitle: string;
+  recommendedGames: GameCardProps[];
+  recommendedHighlight: HighlightProps;
 } & CartListProps &
-  Pick<PaymentOptionsProps, 'cards'>
+  Pick<PaymentOptionsProps, 'cards'>;
 
 const Cart = ({
   recommendedTitle,
@@ -24,7 +24,7 @@ const Cart = ({
   recommendedHighlight,
   cards
 }: CartProps) => {
-  const handlePayment = () => ({})
+  const handlePayment = () => ({});
 
   return (
     <Base>
@@ -56,7 +56,7 @@ const Cart = ({
         highlight={recommendedHighlight}
       />
     </Base>
-  )
-}
+  );
+};
 
-export default Cart
+export default Cart;

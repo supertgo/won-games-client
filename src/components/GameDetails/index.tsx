@@ -1,22 +1,22 @@
-import { Apple, Windows, Linux } from '@styled-icons/fa-brands'
+import { Apple, Windows, Linux } from '@styled-icons/fa-brands';
 
-import Heading from 'components/Heading'
-import MediaMatch from 'components/MediaMatch'
+import Heading from 'components/Heading';
+import MediaMatch from 'components/MediaMatch';
 
-import * as S from './styles'
+import * as S from './styles';
 
-type Platform = 'windows' | 'linux' | 'mac'
+type Platform = 'windows' | 'linux' | 'mac';
 
-type Rating = 'BR0' | 'BR10' | 'BR12' | 'BR14' | 'BR16' | 'BR18'
+type Rating = 'BR0' | 'BR10' | 'BR12' | 'BR14' | 'BR16' | 'BR18';
 
 export type GameDetailsProps = {
-  developer: string
-  publisher: string
-  platforms: Platform[]
-  releaseDate: string
-  rating: Rating
-  genres: string[]
-}
+  developer: string;
+  publisher: string;
+  platforms: Platform[];
+  releaseDate: string;
+  rating: Rating;
+  genres: string[];
+};
 
 const GameDetails = ({
   developer,
@@ -30,7 +30,7 @@ const GameDetails = ({
     linux: <Linux title="Linux" size={18} />,
     mac: <Apple title="Mac" size={18} />,
     windows: <Windows title="Windows" size={18} />
-  }
+  };
 
   return (
     <S.Wrapper>
@@ -84,7 +84,7 @@ const GameDetails = ({
         </S.Block>
       </S.Content>
     </S.Wrapper>
-  )
-}
+  );
+};
 
-export default GameDetails
+export default GameDetails;

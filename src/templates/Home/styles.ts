@@ -1,7 +1,7 @@
-import styled, { css } from 'styled-components'
-import media from 'styled-media-query'
+import styled, { css } from 'styled-components';
+import media from 'styled-media-query';
 
-import * as HeadingStyles from 'components/Heading/styles'
+import * as HeadingStyles from 'components/Heading/styles';
 
 export const SectionBanner = styled.section`
   ${({ theme }) => css`
@@ -13,7 +13,7 @@ export const SectionBanner = styled.section`
       z-index: ${theme.layers.base};
     `}
   `}
-`
+`;
 
 export const SectionNews = styled.div`
   ${({ theme }) => css`
@@ -35,4 +35,4 @@ export const SectionNews = styled.div`
       }
     `}
   `}
-`
+`;

@@ -1,23 +1,23 @@
-import { initializeApollo } from 'utils/apollo'
-import { QueryRecommended } from 'graphql/generated/QueryRecommended'
-import { QUERY_RECOMMENDED } from 'graphql/queries/recommended'
-import { gamesMapper, highlightMapper } from 'utils/mappers'
+import { initializeApollo } from 'utils/apollo';
+import { QueryRecommended } from 'graphql/generated/QueryRecommended';
+import { QUERY_RECOMMENDED } from 'graphql/queries/recommended';
+import { gamesMapper, highlightMapper } from 'utils/mappers';
 
-import Cart, { CartProps } from 'templates/Cart'
+import Cart, { CartProps } from 'templates/Cart';
 
-import itemsMock from 'components/CartList/mock'
-import cardsMock from 'components/PaymentOptions/mock'
+import itemsMock from 'components/CartList/mock';
+import cardsMock from 'components/PaymentOptions/mock';
 
 export default function CartPage(props: CartProps) {
-  return <Cart {...props} />
+  return <Cart {...props} />;
 }
 
 export async function getServerSideProps() {
-  const apolloClient = initializeApollo()
+  const apolloClient = initializeApollo();
 
   const { data } = await apolloClient.query<QueryRecommended>({
     query: QUERY_RECOMMENDED
-  })
+  });
 
   return {
     props: {
@@ -30,5 +30,5 @@ export async function getServerSideProps() {
         data.recommended?.section?.highlight
       )
     }
-  }
+  };
 }

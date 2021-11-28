@@ -1,6 +1,6 @@
-import theme from 'styles/theme'
-import { render } from 'utils/test-utils'
-import { Container } from '.'
+import theme from 'styles/theme';
+import { render } from 'utils/test-utils';
+import { Container } from '.';
 
 describe('<Container />', () => {
   it('should render the heading', () => {
@@ -8,12 +8,12 @@ describe('<Container />', () => {
       <Container>
         <span>Won Games</span>
       </Container>
-    )
+    );
 
     expect(container.firstChild).toHaveStyleRule(
       'max-width',
       theme.grid.container
-    )
+    );
 
     expect(container.firstChild).toMatchInlineSnapshot(`
       .c0 {
@@ -32,6 +32,6 @@ describe('<Container />', () => {
           Won Games
         </span>
       </div>
-    `)
-  })
-})
+    `);
+  });
+});

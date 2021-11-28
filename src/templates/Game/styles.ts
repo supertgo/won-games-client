@@ -1,7 +1,7 @@
-import styled, { css } from 'styled-components'
-import media from 'styled-media-query'
+import styled, { css } from 'styled-components';
+import media from 'styled-media-query';
 
-import { Container } from 'components/Container'
+import { Container } from 'components/Container';
 
 export const Main = styled.main`
   margin-top: 20rem;
@@ -9,11 +9,11 @@ export const Main = styled.main`
   ${media.greaterThan('medium')`
     margin-top: 45rem;
   `}
-`
+`;
 
 type CoverProps = {
-  src: string
-}
+  src: string;
+};
 
 export const Cover = styled.div<CoverProps>`
   ${({ src }) => css`
@@ -32,7 +32,7 @@ export const Cover = styled.div<CoverProps>`
       clip-path: polygon(0 0, 100% 0, 100% 100%, 0 85%);
     `}
   `}
-`
+`;
 
 const Section = styled(Container).attrs({ as: 'section' })`
   ${({ theme }) => css`
@@ -42,9 +42,9 @@ const Section = styled(Container).attrs({ as: 'section' })`
       margin-bottom: calc(${theme.spacings.xlarge} * 2);
     `}
   `}
-`
+`;
 
-export const SectionGameInfo = styled(Section)``
+export const SectionGameInfo = styled(Section)``;
 
 export const SectionGallery = styled(Section)`
   display: none;
@@ -52,7 +52,7 @@ export const SectionGallery = styled(Section)`
   ${media.greaterThan('medium')`
     display: block;
   `}
-`
+`;
 
 export const SectionDescription = styled(Section)`
   ${({ theme }) => css`
@@ -62,6 +62,6 @@ export const SectionDescription = styled(Section)`
       margin-top: ${theme.spacings.medium};
     }
   `}
-`
+`;
 
-export const SectionGameDetails = styled(Section)``
+export const SectionGameDetails = styled(Section)``;

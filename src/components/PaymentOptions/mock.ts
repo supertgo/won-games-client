@@ -9,4 +9,4 @@ export default [
     img: '/img/master-card.png',
     number: '*** *** **** 4326'
   }
-]
+];

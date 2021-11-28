@@ -1,15 +1,15 @@
-import * as S from './styles'
+import * as S from './styles';
 
-export type LineColors = 'primary' | 'secondary'
+export type LineColors = 'primary' | 'secondary';
 
 export type HeadingProps = {
-  children: React.ReactNode
-  color?: 'white' | 'black'
-  lineLeft?: boolean
-  lineBottom?: boolean
-  lineColor?: LineColors
-  size?: 'small' | 'medium' | 'huge'
-}
+  children: React.ReactNode;
+  color?: 'white' | 'black';
+  lineLeft?: boolean;
+  lineBottom?: boolean;
+  lineColor?: LineColors;
+  size?: 'small' | 'medium' | 'huge';
+};
 
 const Heading = ({
   children,
@@ -28,6 +28,6 @@ const Heading = ({
   >
     {children}
   </S.Wrapper>
-)
+);
 
-export default Heading
+export default Heading;

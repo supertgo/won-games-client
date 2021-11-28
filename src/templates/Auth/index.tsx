@@ -1,13 +1,13 @@
-import Link from 'next/link'
+import Link from 'next/link';
 
-import Heading from 'components/Heading'
-import Logo from 'components/Logo'
-import * as S from './styles'
+import Heading from 'components/Heading';
+import Logo from 'components/Logo';
+import * as S from './styles';
 
 type AuthProps = {
-  title: string
-  children: React.ReactNode
-}
+  title: string;
+  children: React.ReactNode;
+};
 
 const Auth = ({ title, children }: AuthProps) => (
   <S.Wrapper>
@@ -45,6 +45,6 @@ const Auth = ({ title, children }: AuthProps) => (
       </S.ContentWrapper>
     </S.Content>
   </S.Wrapper>
-)
+);
 
-export default Auth
+export default Auth;

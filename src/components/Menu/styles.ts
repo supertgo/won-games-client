@@ -1,5 +1,5 @@
-import styled, { css } from 'styled-components'
-import media from 'styled-media-query'
+import styled, { css } from 'styled-components';
+import media from 'styled-media-query';
 
 export const Wrapper = styled.menu`
   ${({ theme }) => css`
@@ -9,7 +9,7 @@ export const Wrapper = styled.menu`
     position: relative;
     z-index: ${theme.layers.menu};
   `}
-`
+`;
 
 export const LogoWrapper = styled.div`
   ${media.lessThan('medium')`
@@ -17,7 +17,7 @@ export const LogoWrapper = styled.div`
     left: 50%;
     transform: translateX(-50%);
   `}
-`
+`;
 
 export const IconWrapper = styled.div`
   ${({ theme }) => css`
@@ -26,7 +26,7 @@ export const IconWrapper = styled.div`
     width: 2.4rem;
     height: 2.4rem;
   `}
-`
+`;
 
 export const MenuGroup = styled.div`
   ${({ theme }) => css`
@@ -39,7 +39,7 @@ export const MenuGroup = styled.div`
       margin-left: ${theme.spacings.xsmall};
     }
   `}
-`
+`;
 
 export const MenuNav = styled.div`
   ${({ theme }) => css`
@@ -47,7 +47,7 @@ export const MenuNav = styled.div`
 			margin-left: ${theme.spacings.small};
 		`}
   `}
-`
+`;
 
 export const MenuLink = styled.a`
   ${({ theme }) => css`
@@ -80,11 +80,11 @@ export const MenuLink = styled.a`
       }
     }
   `}
-`
+`;
 
 type MenuFullProps = {
-  isOpen: boolean
-}
+  isOpen: boolean;
+};
 
 export const MenuFull = styled.nav<MenuFullProps>`
   ${({ theme, isOpen }) => css`
@@ -136,7 +136,7 @@ export const MenuFull = styled.nav<MenuFullProps>`
       transition: transform 0.3s ease-in-out;
     }
   `}
-`
+`;
 
 export const RegisterBox = styled.div`
   ${({ theme }) => css`
@@ -151,7 +151,7 @@ export const RegisterBox = styled.div`
       font-size: ${theme.font.sizes.xsmall};
     }
   `}
-`
+`;
 
 export const CreateAccount = styled.a`
   ${({ theme }) => css`
@@ -159,4 +159,4 @@ export const CreateAccount = styled.a`
     color: ${theme.colors.primary};
     border-bottom: 0.2rem solid ${theme.colors.primary};
   `}
-`
+`;

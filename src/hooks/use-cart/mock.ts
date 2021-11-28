@@ -1,4 +1,4 @@
-import { QUERY_GAMES } from 'graphql/queries/games'
+import { QUERY_GAMES } from 'graphql/queries/games';
 
 export const gamesMock = {
   request: {
@@ -39,7 +39,7 @@ export const gamesMock = {
       }
     }
   }
-}
+};
 
 export const cartItems = [
   {
@@ -54,4 +54,4 @@ export const cartItems = [
     price: '$10.50',
     title: 'Sample Game'
   }
-]
+];
