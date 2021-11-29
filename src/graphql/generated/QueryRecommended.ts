@@ -21,7 +21,7 @@ export interface QueryRecommended_recommended_section_highlight_floatImage {
 
 export interface QueryRecommended_recommended_section_highlight {
   __typename: "ComponentPageHighlight";
-  title: string;
+  title: string | null;
   subtitle: string;
   background: QueryRecommended_recommended_section_highlight_background | null;
   floatImage: QueryRecommended_recommended_section_highlight_floatImage | null;

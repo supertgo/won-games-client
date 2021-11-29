@@ -41,7 +41,7 @@ export interface QueryUpcoming_showcase_upcomingGames_highlight_floatImage {
 
 export interface QueryUpcoming_showcase_upcomingGames_highlight {
   __typename: "ComponentPageHighlight";
-  title: string;
+  title: string | null;
   subtitle: string;
   background: QueryUpcoming_showcase_upcomingGames_highlight_background | null;
   floatImage: QueryUpcoming_showcase_upcomingGames_highlight_floatImage | null;
