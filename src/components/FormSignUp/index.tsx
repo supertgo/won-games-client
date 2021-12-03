@@ -1,8 +1,9 @@
 import { useState } from 'react';
 import Link from 'next/link';
+import { signIn } from 'next-auth/client';
 import { AccountCircle, Email, Lock } from '@styled-icons/material-outlined';
 
-import { FormWrapper, FormLink } from 'components/Form';
+import { FormWrapper, FormLink, FormLoading } from 'components/Form';
 import Button from 'components/Button';
 import TextField from 'components/TextField';
 import { UsersPermissionsRegisterInput } from 'graphql/generated/globalTypes';
@@ -16,7 +17,17 @@ const FormSignUp = () => {
     password: ''
   });
 
-  const [createUser] = useMutation(MutationRegister);
+  const [createUser, { error, loading }] = useMutation(MutationRegister, {
+    onError: (err) => console.log(err),
+    onCompleted: () => {
+      !error &&
+        signIn('credentials', {
+          email: values.email,
+          password: values.password,
+          callbackUrl: '/'
+        });
+    }
+  });
 
   function handleInput(field: string, value: string) {
     setValues((s) => ({ ...s, [field]: value }));
@@ -68,8 +79,8 @@ const FormSignUp = () => {
           icon={<Lock />}
         />
 
-        <Button type="submit" size="large" fullWidth>
-          Sign up now
+        <Button type="submit" size="large" disabled={loading} fullWidth>
+          {loading ? <FormLoading /> : <span>Sign up now</span>}
         </Button>
 
         <FormLink>
