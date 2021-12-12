@@ -29,7 +29,8 @@ const FormSignUp = () => {
   const [createUser, { error, loading }] = useMutation(MutationRegister, {
     onError: (err) =>
       setFormError(
-        err?.graphQLErrors[0]?.extensions?.data.message[0].messages[0]
+        err?.graphQLErrors[0]?.extensions?.exception.data.message[0].messages[0]
+          .message
       ),
     onCompleted: () => {
       !error &&
