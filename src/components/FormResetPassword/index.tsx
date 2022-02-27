@@ -1,43 +1,32 @@
-import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { signIn } from 'next-auth/client';
 import { useState } from 'react';
 
-import { Email, Lock, ErrorOutline } from '@styled-icons/material-outlined';
+import { Lock, ErrorOutline } from '@styled-icons/material-outlined';
 
-import { FormError, FormLink, FormLoading, FormWrapper } from 'components/Form';
+import { FormError, FormLoading, FormWrapper } from 'components/Form';
 import Button from 'components/Button';
 import TextField from 'components/TextField';
 
-import * as S from './styles';
-import { FieldErros, signInValidate } from 'utils/validations';
+import { FieldErros, resetValidate } from 'utils/validations';
 
-const FormSignIn = () => {
+const FormResetPassword = () => {
   const [formError, setFormError] = useState('');
-  const [fieldError, setFieldError] = useState<FieldErros>({
-    email: '',
-    password: ''
-  });
-
-  const [values, setValues] = useState({
-    email: '',
-    password: ''
-  });
-
+  const [fieldError, setFieldError] = useState<FieldErros>({});
+  const [values, setValues] = useState({ password: '', confirm_password: '' });
   const [loading, setLoading] = useState(false);
-
   const routes = useRouter();
   const { push, query } = routes;
 
-  function handleInput(field: string, value: string) {
+  const handleInput = (field: string, value: string) => {
     setValues((s) => ({ ...s, [field]: value }));
-  }
+  };
 
-  async function handleSubmit(event: React.FormEvent) {
+  const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
     setLoading(true);
 
-    const errors = signInValidate(values);
+    const errors = resetValidate(values);
 
     if (Object.keys(errors).length) {
       setFieldError(errors);
@@ -47,6 +36,7 @@ const FormSignIn = () => {
 
     setFieldError({});
 
+    // sign in
     const result = await signIn('credentials', {
       ...values,
       redirect: false,
@@ -54,13 +44,14 @@ const FormSignIn = () => {
     });
 
     if (result?.url) {
-      return push(result.url);
+      return push(result?.url);
     }
 
     setLoading(false);
 
+    // jogar o erro
     setFormError('username or password is invalid');
-  }
+  };
 
   return (
     <FormWrapper>
@@ -72,14 +63,6 @@ const FormSignIn = () => {
       )}
       <form onSubmit={handleSubmit}>
         <TextField
-          name="email"
-          placeholder="Email"
-          type="email"
-          error={fieldError?.email}
-          onInputChange={(v) => handleInput('email', v)}
-          icon={<Email />}
-        />
-        <TextField
           name="password"
           placeholder="Password"
           type="password"
@@ -87,23 +70,21 @@ const FormSignIn = () => {
           onInputChange={(v) => handleInput('password', v)}
           icon={<Lock />}
         />
-        <Link href="/forgot-password" passHref>
-          <S.ForgotPassword>Forgot your password?</S.ForgotPassword>
-        </Link>
+        <TextField
+          name="confirm_password"
+          placeholder="Confirm password"
+          type="password"
+          error={fieldError?.confirm_password}
+          onInputChange={(v) => handleInput('confirm_password', v)}
+          icon={<Lock />}
+        />
 
         <Button type="submit" size="large" disabled={loading} fullWidth>
-          {loading ? <FormLoading /> : <span>Sign in now</span>}
+          {loading ? <FormLoading /> : <span>Reset password</span>}
         </Button>
-
-        <FormLink>
-          Don’t have an account?{' '}
-          <Link href="/sign-up">
-            <a>Sign up</a>
-          </Link>
-        </FormLink>
       </form>
     </FormWrapper>
   );
 };
 
-export default FormSignIn;
+export default FormResetPassword;

@@ -1,4 +1,9 @@
-import { signInValidate, signUpValidate } from './';
+import {
+  forgotValidate,
+  resetValidate,
+  signInValidate,
+  signUpValidate
+} from './';
 
 describe('validations', () => {
   describe('signInValidate', () => {
@@ -51,6 +56,47 @@ describe('validations', () => {
         confirm_password: '4321'
       };
       expect(signUpValidate(values).confirm_password).toMatchInlineSnapshot(
+        `"confirm password doest not match with password"`
+      );
+    });
+  });
+
+  describe('forgotValidate()', () => {
+    it('should validate empty fields', () => {
+      const values = { email: '' };
+      expect(forgotValidate(values)).toMatchObject({
+        email: '"email" is not allowed to be empty'
+      });
+    });
+
+    it('should return invalid email error', () => {
+      const values = { email: 'invalid-email' };
+      expect(forgotValidate(values)).toMatchInlineSnapshot(`
+        Object {
+          "email": "\\"email\\" must be a valid email",
+        }
+      `);
+    });
+  });
+
+  describe('resetValidadte()', () => {
+    it('should validate empty fileds ', () => {
+      const values = { password: '', confirm_password: '' };
+      expect(resetValidate(values)).toMatchObject({
+        password: expect.any(String)
+      });
+    });
+
+    it('should validate confirm  password', () => {
+      const values = { password: '123', confirm_password: '' };
+      expect(resetValidate(values).confirm_password).toMatchInlineSnapshot(
+        `"\\"confirm_password\\" is not allowed to be empty"`
+      );
+    });
+
+    it('should  confirm  password when different', () => {
+      const values = { password: '123', confirm_password: '321' };
+      expect(resetValidate(values).confirm_password).toMatchInlineSnapshot(
         `"confirm password doest not match with password"`
       );
     });

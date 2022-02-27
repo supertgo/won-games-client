@@ -5,6 +5,7 @@
   },
   "window.zoomLevel": 0,
   "conventionalCommits.scopes": [
-    "apollo"
+    "apollo",
+    "pages"
   ]
 }
