@@ -56,7 +56,7 @@ describe('validations', () => {
         confirm_password: '4321'
       };
       expect(signUpValidate(values).confirm_password).toMatchInlineSnapshot(
-        `"confirm password doest not match with password"`
+        `"confirm password does not match with password"`
       );
     });
   });
@@ -97,7 +97,7 @@ describe('validations', () => {
     it('should  confirm  password when different', () => {
       const values = { password: '123', confirm_password: '321' };
       expect(resetValidate(values).confirm_password).toMatchInlineSnapshot(
-        `"confirm password doest not match with password"`
+        `"confirm password does not match with password"`
       );
     });
   });

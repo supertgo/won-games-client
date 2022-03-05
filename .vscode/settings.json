@@ -7,6 +7,7 @@
   "conventionalCommits.scopes": [
     "apollo",
     "pages",
-    "api"
+    "api",
+    "components"
   ]
 }
