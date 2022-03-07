@@ -8,6 +8,7 @@
     "apollo",
     "pages",
     "api",
-    "components"
+    "components",
+    "hooks"
   ]
 }
