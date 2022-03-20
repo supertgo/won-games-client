@@ -5,7 +5,6 @@ import { gamesMapper, highlightMapper } from 'utils/mappers';
 
 import Cart, { CartProps } from 'templates/Cart';
 
-import cardsMock from 'components/PaymentOptions/mock';
 import { GetServerSidePropsContext } from 'next';
 import protectedRoutes from 'utils/protected-routes';
 
@@ -23,7 +22,6 @@ export async function getServerSideProps(ctx: GetServerSidePropsContext) {
   return {
     props: {
       session,
-      cards: cardsMock,
       recommendedTitle: data.recommended?.section?.title,
       recommendedGames: gamesMapper(data.recommended?.section?.games),
       recommendedHighlight: highlightMapper(
