@@ -5,24 +5,24 @@ import { gamesMapper, highlightMapper } from 'utils/mappers';
 
 import Cart, { CartProps } from 'templates/Cart';
 
-import itemsMock from 'components/CartList/mock';
 import cardsMock from 'components/PaymentOptions/mock';
+import { GetServerSidePropsContext } from 'next';
+import protectedRoutes from 'utils/protected-routes';
 
 export default function CartPage(props: CartProps) {
   return <Cart {...props} />;
 }
 
-export async function getServerSideProps() {
-  const apolloClient = initializeApollo();
-
+export async function getServerSideProps(ctx: GetServerSidePropsContext) {
+  const session = await protectedRoutes(ctx);
+  const apolloClient = initializeApollo(null, session);
   const { data } = await apolloClient.query<QueryRecommended>({
     query: QUERY_RECOMMENDED
   });
 
   return {
     props: {
-      items: itemsMock,
-      total: '$ 430,00',
+      session,
       cards: cardsMock,
       recommendedTitle: data.recommended?.section?.title,
       recommendedGames: gamesMapper(data.recommended?.section?.games),
