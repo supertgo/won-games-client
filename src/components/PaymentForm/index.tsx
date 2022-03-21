@@ -1,59 +1,124 @@
-import { CardElement } from '@stripe/react-stripe-js';
+import { useEffect, useState } from 'react';
+import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
 import { StripeCardElementChangeEvent } from '@stripe/stripe-js';
 import { ErrorOutline, ShoppingCart } from '@styled-icons/material-outlined';
 
 import Button from 'components/Button';
 import Heading from 'components/Heading';
-import { useState } from 'react';
 
 import * as S from './styles';
+import { useCart } from 'hooks/use-cart';
+import { createPaymentIntent } from 'utils/stripe/methods';
+import { Session } from 'next-auth';
+import { FormLoading } from 'components/Form';
 
-const PaymentForm = () => {
+type PaymentFormProps = {
+  session: Session;
+};
+
+const PaymentForm = ({ session }: PaymentFormProps) => {
+  const { items } = useCart();
+  const stripe = useStripe();
+  const elements = useElements();
   const [error, setError] = useState<string | null>(null);
   const [disabled, setDisabled] = useState(true);
+  const [loading, setLoading] = useState(false);
+  const [clientSecret, setClientSecret] = useState('');
+  const [freeGames, setFreeGames] = useState(false);
+
+  useEffect(() => {
+    async function setPaymentMode() {
+      if (items.length) {
+        const data = await createPaymentIntent({
+          items,
+          token: session.jwt as string
+        });
+
+        if (data.freeGames) {
+          setFreeGames(true);
+          return;
+        }
+
+        if (data.error) {
+          setError(data.error);
+        } else {
+          setFreeGames(false);
+          setClientSecret(data);
+        }
+      }
+    }
+    setPaymentMode();
+  }, [items, session]);
+
   const handleChange = async (event: StripeCardElementChangeEvent) => {
     setDisabled(event.empty);
     setError(event.error ? event.error.message : '');
   };
 
+  const handleSubmit = async (event: React.FormEvent) => {
+    event.preventDefault();
+    setLoading(true);
+
+    const payload = await stripe!.confirmCardPayment(clientSecret, {
+      payment_method: {
+        card: elements!.getElement(CardElement)!
+      }
+    });
+
+    if (payload.error) {
+      setError(`Payment failed ${payload.error.message}`);
+      setLoading(false);
+    } else {
+      setError(null);
+      setLoading(false);
+    }
+  };
+
   return (
     <S.Wrapper>
-      <S.Body>
-        <Heading color="black" size="small" lineBottom>
-          Payment
-        </Heading>
+      <form onSubmit={handleSubmit}>
+        <S.Body>
+          <Heading color="black" size="small" lineBottom>
+            Payment
+          </Heading>
 
-        <CardElement
-          options={{
-            style: {
-              base: {
-                fontSize: '16px'
-              }
-            },
-            hidePostalCode: true
-          }}
-          onChange={handleChange}
-        />
+          {freeGames ? (
+            <S.FreeGames>Only Free games, click buy and enjoy</S.FreeGames>
+          ) : (
+            <CardElement
+              options={{
+                style: {
+                  base: {
+                    fontSize: '16px'
+                  }
+                },
+                hidePostalCode: true
+              }}
+              onChange={handleChange}
+            />
+          )}
 
-        {error && (
-          <S.Error>
-            <ErrorOutline size={20} /> {error}
-          </S.Error>
-        )}
-      </S.Body>
+          {error && (
+            <S.Error>
+              <ErrorOutline size={20} /> {error}
+            </S.Error>
+          )}
+        </S.Body>
 
-      <S.Footer>
-        <Button as="a" fullWidth minimal>
-          Continue shopping
-        </Button>
-        <Button
-          fullWidth
-          icon={<ShoppingCart />}
-          disabled={disabled || !!error}
-        >
-          Buy now
-        </Button>
-      </S.Footer>
+        <S.Footer>
+          <Button as="a" fullWidth minimal>
+            Continue shopping
+          </Button>
+          <Button
+            fullWidth
+            type="submit"
+            icon={loading ? <FormLoading /> : <ShoppingCart />}
+            disabled={!freeGames && (disabled || !!error)}
+          >
+            {!loading && <span>Buy now</span>}
+          </Button>
+        </S.Footer>
+      </form>
     </S.Wrapper>
   );
 };
