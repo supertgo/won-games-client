@@ -12,19 +12,23 @@ const wrapperModifiers = {
     height: 3rem;
     font-size: ${theme.font.sizes.xsmall};
   `,
+
   medium: (theme: DefaultTheme) => css`
     height: 4rem;
     font-size: ${theme.font.sizes.small};
     padding: ${theme.spacings.xxsmall} ${theme.spacings.medium};
   `,
+
   large: (theme: DefaultTheme) => css`
     height: 5rem;
     font-size: ${theme.font.sizes.medium};
     padding: ${theme.spacings.xxsmall} ${theme.spacings.xlarge};
   `,
+
   fullWidth: () => css`
     width: 100%;
   `,
+
   withIcon: (theme: DefaultTheme) => css`
     svg {
       width: 1.5rem;
@@ -34,6 +38,7 @@ const wrapperModifiers = {
       }
     }
   `,
+
   minimal: (theme: DefaultTheme) => css`
     background: none;
     color: ${theme.colors.primary};
@@ -42,6 +47,7 @@ const wrapperModifiers = {
       color: ${darken(0.1, theme.colors.primary)};
     }
   `,
+
   disabled: () => css`
     &:disabled {
       cursor: not-allowed;
