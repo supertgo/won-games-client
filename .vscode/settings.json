@@ -9,6 +9,7 @@
     "pages",
     "api",
     "components",
-    "hooks"
+    "hooks",
+    "utils"
   ]
 }
