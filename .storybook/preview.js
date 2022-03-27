@@ -1,7 +1,8 @@
-import { ThemeProvider } from 'styled-components'
-import { CartContext, CartContextDefaultValues } from 'hooks/use-cart'
-import GlobalStyles from 'styles/global'
-import theme from 'styles/theme'
+import '../.jest/next-image.mock';
+import { ThemeProvider } from 'styled-components';
+import { CartContext, CartContextDefaultValues } from 'hooks/use-cart';
+import GlobalStyles from 'styles/global';
+import theme from 'styles/theme';
 
 export const parameters = {
   backgrounds: {
@@ -17,7 +18,7 @@ export const parameters = {
       }
     ]
   }
-}
+};
 
 export const decorators = [
   (Story, context) => (
@@ -34,4 +35,4 @@ export const decorators = [
       </CartContext.Provider>
     </ThemeProvider>
   )
-]
+];
