@@ -10,6 +10,7 @@ import { GameCardProps } from 'components/GameCard';
 import { HighlightProps } from 'components/Highlight';
 
 import * as S from './styles';
+import Image from 'next/image';
 
 export type GameTemplateProps = {
   cover: string;
@@ -37,7 +38,9 @@ const Game = ({
   recommendedGames
 }: GameTemplateProps) => (
   <Base>
-    <S.Cover src={cover} role="image" aria-label="cover" />
+    <S.CoverWrapper>
+      <Image src={cover} alt={gameInfo.title} layout="fill" />
+    </S.CoverWrapper>
 
     <S.Main>
       <S.SectionGameInfo>
