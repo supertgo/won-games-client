@@ -12,6 +12,9 @@ import theme from 'styles/theme';
 import { useApollo } from 'utils/apollo';
 import { WishlistProvider } from 'hooks/use-wishlist';
 
+import { DefaultSeo } from 'next-seo';
+import SEO from '../../next-seo.config';
+
 function App({ Component, pageProps }: AppProps) {
   const client = useApollo(pageProps.initialApolloState);
 
@@ -31,13 +34,13 @@ function App({ Component, pageProps }: AppProps) {
                   content="The best Game Stores in the world!"
                 />
               </Head>
+              <DefaultSeo {...SEO} />
               <GlobalStyles />
               <NextNprogress
                 color="#F231A5"
                 startPosition={0.3}
                 stopDelayMs={200}
                 height={5}
-                showOnShallow={true}
               />
               <Component {...pageProps} />
             </WishlistProvider>
