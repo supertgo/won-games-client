@@ -10,6 +10,7 @@
     "api",
     "components",
     "hooks",
-    "utils"
+    "utils",
+    "cypress"
   ]
 }
