@@ -29,3 +29,30 @@ import '@testing-library/cypress/add-commands';
 
 
 Cypress.Commands.add('google', () => cy.visit('https://google.com'));
+
+Cypress.Commands.add('shouldRenderBanner', () => {
+  cy.get('.slick-slider').within(() => {
+    cy.findByRole('heading', { name: 'The Witcher 3: Wild Hunt' })
+    cy.findByRole('link', { name: /buy now/i })
+    
+    cy.get('.slick-dots > :nth-child(2) > button').click()
+    cy.wait(500)
+    cy.findByRole('heading', { name: 'Cyberpunk 2077'})
+  })
+});
+
+Cypress.Commands.add('shouldRenderShowcase', ({name, highlight = false}) => {
+  cy.get(`[data-cy="${name}"]`).within(() => {
+    cy.findByRole('heading', { name }).should('exist')
+
+    cy.get(`[data-cy="highlight"]`).should(highlight ? 'exist' : 'not.exist')
+
+    if(highlight) {
+      cy.get(`[data-cy="highlight"]`).within(() => {
+        cy.findByRole('link').should('have.attr', 'href')
+      })
+    }
+  })
+});
+
+
