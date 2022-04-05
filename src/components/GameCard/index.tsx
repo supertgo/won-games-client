@@ -1,5 +1,5 @@
-import Link from 'next/link';
 import Image from 'next/image';
+import Link from 'next/link';
 
 import Ribbon, { RibbonColors, RibbonSizes } from 'components/Ribbon';
 import CartButton from 'components/CartButton';
@@ -34,19 +34,17 @@ const GameCard = ({
   ribbonColor = 'primary',
   ribbonSize = 'small'
 }: GameCardProps) => (
-  <S.Wrapper>
+  <S.Wrapper data-cy="game-card">
     {!!ribbon && (
       <Ribbon color={ribbonColor} size={ribbonSize}>
         {ribbon}
       </Ribbon>
     )}
-
-    <Link href={`game/${slug}`} passHref>
+    <Link href={`/game/${slug}`} passHref>
       <S.ImageBox>
         <Image src={img} alt={title} layout="fill" objectFit="cover" />
       </S.ImageBox>
     </Link>
-
     <S.Content>
       <Link href={`/game/${slug}`} passHref>
         <S.Info>
@@ -54,11 +52,9 @@ const GameCard = ({
           <S.Developer>{developer}</S.Developer>
         </S.Info>
       </Link>
-
       <S.FavButton>
         <WishlistButton id={id} />
       </S.FavButton>
-
       <S.BuyBox>
         {!!promotionalPrice && (
           <S.Price isPromotional>{formatPrice(price)}</S.Price>

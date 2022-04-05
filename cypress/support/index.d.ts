@@ -13,6 +13,12 @@ declare namespace Cypress {
      */
     google(): Chainable<Window>;
 
+    /*
+     * Custom command to get element by data cy value
+     * @example cy.getByDataCy('selector')
+     */
+    getByDataCy(selector: string): Chainable<Element>
+
      /*
      * Custom command to visit google page
      * @example cy.shouldRenderBanner()
