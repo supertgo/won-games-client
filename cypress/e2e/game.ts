@@ -6,7 +6,6 @@ describe('Game Page', () => {
 
     cy.getByDataCy("game-info").within(() => {
       cy.findByRole('heading', {name: /Cyberpunk 2077/i}).should('exist')
-
     })
   })
 })

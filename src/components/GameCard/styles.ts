@@ -13,9 +13,9 @@ export const Wrapper = styled.article`
 
 export const ImageBox = styled.a`
   min-height: 14rem;
+  position: relative;
   width: 100%;
   background: #f6f7f8;
-  position: relative;
   background-image: linear-gradient(
     to right,
     #f6f7f8 0%,
@@ -30,6 +30,7 @@ export const ImageBox = styled.a`
     0% {
       background-position: -40rem 0;
     }
+
     100% {
       background-position: 40rem 0;
     }
@@ -118,6 +119,7 @@ export const Price = styled.div<PriceProps>`
     font-weight: ${theme.font.bold};
     height: 3rem;
     align-items: center;
+
     ${!isPromotional && priceModifiers.default(theme)};
     ${isPromotional && priceModifiers.promotional(theme)};
   `}

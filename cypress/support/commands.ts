@@ -24,21 +24,18 @@
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 
-//ŧesting libray commands
+// Add Testing Library Commands
 import '@testing-library/cypress/add-commands';
-
 
 Cypress.Commands.add('google', () => cy.visit('https://google.com'))
 
-
 Cypress.Commands.add('getByDataCy', (selector, ...args) => {
-  return cy.get(`[data-cy="${selector}"]`, ...args)
+  return cy.get(`[data-cy*="${selector}"]`, ...args)
 })
 
 Cypress.Commands.add('shouldRenderBanner', () => {
   cy.get('.slick-slider').within(() => {
     cy.findByRole('heading', { name: 'The Witcher 3: Wild Hunt' })
- 
     cy.findByRole('link', { name: /buy now/i })
 
     cy.get('.slick-dots > :nth-child(2) > button').click()
@@ -46,13 +43,14 @@ Cypress.Commands.add('shouldRenderBanner', () => {
 
     cy.findByRole('heading', { name: /cyberpunk 2077/i })
     cy.findByRole('link', { name: /buy now/i })
+
   })
 })
 
 Cypress.Commands.add('shouldRenderShowcase', ({ name,  highlight = false }) => {
   cy.getByDataCy(name).within(() => {
     cy.findByRole('heading', { name }).should('exist')
-
+    cy.getByDataCy('game-card').should('have.length.gt', 0)
     cy.getByDataCy('highlight').should(highlight ? 'exist' : 'not.exist')
 
     if (highlight) {
@@ -60,6 +58,6 @@ Cypress.Commands.add('shouldRenderShowcase', ({ name,  highlight = false }) => {
         cy.findByRole('link').should('have.attr', 'href')
       })
     }
+
   })
-  cy.get(`[data-cy="game-card"]`).should('have.length.gt', 0)
 })
