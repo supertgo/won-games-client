@@ -30,7 +30,7 @@ import '@testing-library/cypress/add-commands';
 Cypress.Commands.add('google', () => cy.visit('https://google.com'))
 
 Cypress.Commands.add('getByDataCy', (selector, ...args) => {
-  return cy.get(`[data-cy*="${selector}"]`, ...args)
+  return cy.get(`[data-cy="${selector}"]`, ...args)
 })
 
 Cypress.Commands.add('shouldRenderBanner', () => {
