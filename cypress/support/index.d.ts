@@ -28,13 +28,29 @@ declare namespace Cypress {
      * Custom command to get fields by label
      * @example cy.getFields(selector)
      */
-      getFields(fields: FieldAttributes[]): Chainable<Element>
+    getFields(fields: FieldAttributes[]): Chainable<Element>
 
     /**
      * Custom command to check banner in page
      * @example cy.shouldRenderBanner()
      */
     shouldRenderBanner(): Chainable<Element>
+
+
+    /**
+     * Custom command to find a price and compare to the passed number
+     * @example cy.shouldBeLessThan(number)
+     */
+     shouldBeLessThan(number: number): Chainable<Element>
+
+
+
+    /**
+     * Custom command to find a price and compare to the passed number
+     * @example cy.shouldBeGreaterThan(number)
+     */
+     shouldBeGreaterThan(number: number): Chainable<Element>
+
 
     /**
      * Custom command to check banner in page

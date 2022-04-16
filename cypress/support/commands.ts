@@ -67,3 +67,22 @@ Cypress.Commands.add('shouldRenderShowcase', ({ name,  highlight = false }) => {
 
   })
 })
+
+Cypress.Commands.add('shouldBeGreaterThan', (number) => {
+  cy
+    .findByText(/^\$\d+(\.\d{1,2})?/)
+    .invoke('text')
+    .then($el => $el.replace('$', ''))
+    .then(parseFloat)
+    .should('be.gt', number)
+})
+
+Cypress.Commands.add('shouldBeLessThan', (number) => {
+  cy
+    .findByText(/^\$\d+(\.\d{1,2})?/)
+    .invoke('text')
+    .then($el => $el.replace('$', ''))
+    .then(parseFloat)
+    .should('be.lt', number)
+})
+
