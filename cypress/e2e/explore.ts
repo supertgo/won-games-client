@@ -34,15 +34,20 @@ describe('Explore Page',() => {
   it('should order by price', () => {
     cy.findByText(/lowest to highest/i).click()
 
+    cy.wait(2000)
+
     cy.location('href').should('contain', 'sort=price%3Aasc')
     cy.getByDataCy('game-card').first().within(() => {
       cy.findByText('$0.00').should('exist')
     })
 
-    cy.wait(1000)
+
 
     cy.findByText(/Highest to lowest/).click()
     cy.location('href').should('contain', 'sort=price%3Adesc')
+
+    cy.wait(2000)
+
     cy.getByDataCy('game-card').first().within(() => {
       cy.shouldBeGreaterThan(0)
     })
@@ -51,6 +56,9 @@ describe('Explore Page',() => {
   it('should filter by price', () => {
     cy.findByText(/free/i).click()
     cy.location('href').should('contain', 'price_lte=0')
+
+    cy.wait(2000)
+
     cy.getByDataCy('game-card').first().within(() => {
       cy.findByText('$0.00').should('exist')
     })
@@ -84,5 +92,29 @@ describe('Explore Page',() => {
     cy.getByDataCy('game-card').first().within(() => {
       cy.shouldBeLessThan(500)
     })
+  })
+
+  it('should filter by platform and genre', () => {
+    cy.findByText(/windows/i).click()
+    cy.location('href').should('contain', 'platforms=windows')
+
+    cy.findByText(/linux/i).click()
+    cy.location('href').should('contain', 'platforms=linux')
+
+    cy.findByText(/mac os/i).click()
+    cy.location('href').should('contain', 'platforms=mac')
+
+    cy.findByText(/action/i).click()
+    cy.location('href').should('contain', 'categories=action')
+  })
+
+  it('should return empty when no games match', () => {
+    cy.visit('/games')
+    cy.findByText(/free/i).click()
+    cy.findByText(/linux/i).click()
+
+    cy.getByDataCy('game-card').should('not.exist')
+    cy.findByText(/find any games with this filter/).should('exist')
+    cy.findByRole('link', { name: /go back to store/i}).should('exist')
   })
 })
