@@ -16,6 +16,8 @@ type User = {
   password: string;
 }
 
+
+
 declare namespace Cypress {
   interface Chainable {
     /**
@@ -36,11 +38,17 @@ declare namespace Cypress {
      */
     getFields(fields: FieldAttributes[]): Chainable<Element>
 
-     /**
-     * Custom command to singUp an user
-     * @example cy.signUp(user)
-     */
-     signUp(user: User): Chainable<Element>
+    /**
+   * Custom command to singUp an user
+   * @example cy.signUp(user)
+   */
+    signUp(user: User): Chainable<Element>
+
+    /**
+   * Custom command to sing in an user
+   * @example cy.signIn(user)
+   */
+    signIn(email?: string, password?: string): Chainable<Element>
 
     /**
      * Custom command to check banner in page
