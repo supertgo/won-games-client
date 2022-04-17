@@ -10,6 +10,12 @@ type FieldAttributes = {
   label: string
 }
 
+type User = {
+  username: string;
+  email: string;
+  password: string;
+}
+
 declare namespace Cypress {
   interface Chainable {
     /**
@@ -30,6 +36,12 @@ declare namespace Cypress {
      */
     getFields(fields: FieldAttributes[]): Chainable<Element>
 
+     /**
+     * Custom command to singUp an user
+     * @example cy.signUp(user)
+     */
+     signUp(user: User): Chainable<Element>
+
     /**
      * Custom command to check banner in page
      * @example cy.shouldRenderBanner()
@@ -41,7 +53,7 @@ declare namespace Cypress {
      * Custom command to find a price and compare to the passed number
      * @example cy.shouldBeLessThan(number)
      */
-     shouldBeLessThan(number: number): Chainable<Element>
+    shouldBeLessThan(number: number): Chainable<Element>
 
 
 

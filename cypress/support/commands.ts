@@ -39,6 +39,14 @@ Cypress.Commands.add('getFields', (fields) => {
   ))
 })
 
+Cypress.Commands.add('signUp', ({ email, username, password }) => {
+  cy.findByPlaceholderText(/username/i).type(username)
+  cy.findByPlaceholderText(/email/i).type(email)
+  cy.findByPlaceholderText(/^password/i).type(password)
+  cy.findByPlaceholderText(/confirm password/i).type(password)
+  cy.findByRole('button', { name: /sign up now/i}).click()
+})
+
 Cypress.Commands.add('shouldRenderBanner', () => {
   cy.get('.slick-slider').within(() => {
     cy.findByRole('heading', { name: 'The Witcher 3: Wild Hunt' })
