@@ -27,6 +27,18 @@ declare namespace Cypress {
     google(): Chainable<Window>
 
     /**
+   * Custom command to add a game to cart by index
+   * @example cy.addToCartByIndex(index)
+   */
+    addToCartByIndex(index: number): Chainable<Element>
+
+      /**
+   * Custom command to remove a game from cart by index
+   * @example cy.removeFromCartByIndex(index)
+   */
+    removeFromCartByIndex(index: number): Chainable<Element>
+
+    /**
      * Custom command to get element by data-cy
      * @example cy.getByDataCy('selector')
      */

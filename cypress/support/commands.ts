@@ -39,6 +39,18 @@ Cypress.Commands.add('getFields', (fields) => {
   ))
 })
 
+Cypress.Commands.add('addToCartByIndex', (index) => {
+  cy.getByDataCy('game-card').eq(index).within(() => {
+    cy.findByRole('button', { name: /add to cart/i }).click()
+  })
+})
+
+Cypress.Commands.add('removeFromCartByIndex', (index) => {
+  cy.getByDataCy('game-card').eq(index).within(() => {
+    cy.findByRole('button', { name: /remove from cart/i }).click()
+  })
+})
+
 Cypress.Commands.add('signUp', ({ email, username, password }) => {
   cy.findByPlaceholderText(/username/i).type(username)
   cy.findByPlaceholderText(/email/i).type(email)
