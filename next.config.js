@@ -11,7 +11,8 @@ module.exports = withPWA({
     domains: [
       'localhost',
       'res.cloudinary.com',
-      'https://won-games-client-supertgo.vercel.app/'
+      'https://won-games-client-supertgo.vercel.app/',
+      'https://supertgo-wongames-92hjl.ondigitalocean.app/'
     ]
   },
   future: {
