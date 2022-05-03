@@ -3,6 +3,10 @@
 
 Front-end desenvolvido durante o curso [React Avançado](https://reactavancado.com.br/).
 
+<p align="center">
+  <img src="/demo/won-games.mp4" />
+</p>
+
 ## Pré-requisitos
 Ter uma versão atualizada do NodeJS instalada em sua máquina e um gerenciador de pacotes (yarn ou npm).
 
