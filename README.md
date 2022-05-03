@@ -4,7 +4,7 @@
 Front-end desenvolvido durante o curso [React Avançado](https://reactavancado.com.br/).
 
 <p align="center">
-  <img src="/demo/won-games.mp4" />
+  <img src="/demo/won-games.gif" />
 </p>
 
 ## Pré-requisitos
