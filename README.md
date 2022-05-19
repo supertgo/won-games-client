@@ -8,7 +8,7 @@ Front-end desenvolvido durante o curso [React Avançado](https://reactavancado.c
 </p>
 
 ## Como executar
-Vá até a paste do projeto e digite:
+Vá até a pasta do projeto e digite:
 ```
 yarn ou npm install
 ```
